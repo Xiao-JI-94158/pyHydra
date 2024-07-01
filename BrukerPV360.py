@@ -26,35 +26,37 @@ POST_PROCESSING_PARAMETERS = {
 }
 
 RAW_DATA_SET = {
-    'fid'       : 'fid',
-    'ser'       : 'ser',
+    'rawdata'   : 'rawdata',
+    'fid'       : 'pdata/1/fid_proc.64',
     # pdata subdir might not exist due to user config (not performing factory reconstruction)
     '2dseq'     : 'pdata/1/2dseq',
     'dicom'     : 'pdata/1/dicom',
 }
 
-RAW_PARAM_SET = {
+ACQ_PARAM_SET = {
     'acqp'      : 'acqp',
-    'method'    : 'method',
-    'visu_pars' : 'visu_pars',
-    # pdata subdir might not exist due to user config (not performing factory reconstruction)2
-    'procs'     : 'pdata/1/procs',
-    'reco'      : 'pdata/1/reco'
+    'acqp.out'  : 'acqp.out',
+    'configscan': 'configscan'
+    'method'    : 'method'
 }
+
+RECO_PARAM_SET = {
+    'id'        : 'pdata/1/id',
+    'methreco'  : 'pdata/1/methreco',
+    'reco'      : 'pdata/1/reco',
+    'reco.out'  : 'pdata/1/reco.out',
+    'visu_pars' : 'pdata/1/visu_pars'
+}
+
 
 DATA_COLLECTION_TEMPLATE = {
-    'time_point_sec' : None,
-    'fid'            : None,
-    'ser'            : None,
-    '2dseq'          : None,
-    'k_space'        : None,
-    'r_image'        : None,
-    'f_spect'        : None,
-    'proj'           : None
+    'rawdata'   : None,
+    '2dseq'     : None,
+    'dicom'     : None
 }
 
 
-class BrukerPV6Exp():
+class BrukerPV360Exp():
     """
         Graneral Basic Class that that read, stores, and (post-)processes data acquired from Bruker PavaVision 6 environment.
         
@@ -74,11 +76,10 @@ class BrukerPV6Exp():
     
         1. validate experiment dataset:
             1.1 data files:
-                must        : fid (1d NSpect) ser(pseudo-2d NSpect)
-                optional    : 2dseq
+                must        : rawdata.jobX, 
+                optional    : fid_proc.64, 2dseq, dicom
             1.2 param files:
-                must        : acqp, method, visu_pars
-                optional    : acqu, acqus, procs, reco
+
         
         2. update dataset_dict['PARAM']:
 
@@ -100,9 +101,8 @@ class BrukerPV6Exp():
         self._update_dataset_param()       
         self._update_dataset_data()
         
-        if (self.post_processing_params['does_update_pdata']):
-            self.dataset['DATA']['2dseq'] = self._process_2dseq()
-            self.dataset['DATA']['fid'] = self._process_fid()    
+        self.dataset['DATA']['2dseq'] = self._process_2dseq()
+        self.dataset['DATA']['fid'] = self._process_fid()    
         
     def _update_post_processing_params(self, kwargs):
         """
