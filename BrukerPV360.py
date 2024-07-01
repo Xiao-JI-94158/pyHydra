@@ -58,7 +58,7 @@ DATA_COLLECTION_TEMPLATE = {
 
 class BrukerPV360Exp():
     """
-        Graneral Basic Class that that read, stores, and (post-)processes data acquired from Bruker PavaVision 6 environment.
+        Basic Class that that read, stores, and (post-)processes data acquired from Bruker PavaVision 360 environment.
         
         Parameters:
         -----------
@@ -127,8 +127,10 @@ class BrukerPV360Exp():
     def _validate_data_files(self, exp_dataset_path)->Dict:
         """
         1.1 data files:
-            must        : fid or ser
+            must        : rawdata.jobX
             optional    : 2dseq
+                          fid_proc.64
+                          dicom
         """
         data_dict = RAW_DATA_SET 
      
