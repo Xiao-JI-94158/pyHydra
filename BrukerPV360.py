@@ -35,7 +35,7 @@ RAW_DATA_SET = {
 ACQ_PARAM_SET = {
     'acqp'      : 'acqp',
     'acqp.out'  : 'acqp.out',
-    'configscan': 'configscan'
+    'configscan': 'configscan',
     'method'    : 'method'
 }
 
