@@ -29,8 +29,7 @@ RAW_DATA_SET = {
     'rawdata'   : 'rawdata',
     'fid'       : 'pdata/1/fid_proc.64',
     # pdata subdir might not exist due to user config (not performing factory reconstruction)
-    '2dseq'     : 'pdata/1/2dseq',
-    'dicom'     : 'pdata/1/dicom',
+    '2dseq'     : 'pdata/1/2dseq'
 }
 
 ACQ_PARAM_SET = {
