@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 
 from scipy.interpolate import InterpolatedUnivariateSpline, CubicSpline
 
-from pybaselines import Baseline
+#from pybaselines import Baseline
 
 # In-house packages
 
@@ -140,7 +140,7 @@ class BrukerPV360Exp():
                 
                 self.dataset['DATA'][key] = None
        
-        if ((self.dataset['DATA']['fid'] == None) and (self.dataset['DATA']['ser'] == None)):
+        if ((self.dataset['DATA']['fid'] == None) and (self.dataset['DATA']['rawdata'] == None)):
                 raise FileNotFoundError(f"Cannot find raw data file, neither fid nor ser, in the given directory of Experiment ({exp_dataset_path})")
         
         if (self.post_processing_params['is_verbose']):
@@ -153,7 +153,7 @@ class BrukerPV360Exp():
             must        : acqp, method, visu_pars
             optional    : acqu, acqus, procs, reco        
         """
-        param_dict = RAW_PARAM_SET
+        param_dict = (ACQ_PARAM_SET | RECO_PARAM_SET)   
         self.dataset['PARAM'] = self._complete_abs_path(param_dict, exp_dataset_path)
 
         for key, val in self.dataset['PARAM'].items():
@@ -263,6 +263,14 @@ class BrukerPV360Exp():
         except ValueError:
             return " ".join(vallist)
 
+        """
+        # xji20240712: 
+            PV360 introduced new syntax to reduce the length of parameter file:
+                e.g., '##$P=(', '64', ')', '128', '@63*(0)' means: for parameter <P> of 64 elements, of which the first is 128 and the rest 63 are 0.
+            We are then first to allocate a 
+
+        """
+        
         # include potentially multiple lines
         while len(vallist) != np.prod(arraysize):
             vallist = vallist + current_file.readline().split()
@@ -271,7 +279,11 @@ class BrukerPV360Exp():
         try:
             vallist = [int(x) for x in vallist]
         except ValueError:
-            vallist = [float(x) for x in vallist]
+            try:
+                vallist = [float(x) for x in vallist]
+            except ValueError:
+                print(line)
+                print(arraysize, np.shape(vallist), vallist)
 
         """
         # This block below is the original code from Ref: https://github.com/jdoepfert/brukerMRI
@@ -369,7 +381,4 @@ class BrukerPV360Exp():
         return baseline_fitter.aspls(proj, lam=lambda_fit)[0]
 
     def _normalize_splines(self):
-        
-        
-        
         return NotImplemented

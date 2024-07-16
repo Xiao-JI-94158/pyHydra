@@ -163,6 +163,6 @@ cython_debug/
 
 # VS Code
 .vscode/
-
+.conda/
 BrukerPV6TestData/
 BrukerPV360TestData/
