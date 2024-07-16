@@ -1,0 +1,16 @@
+##TITLE= Parameter file, TopSpin 4.3.0
+##JCAMPDX= 5.0
+##DATATYPE= Parameter Values
+##NPOINTS= 2	$$ modification sequence number
+##ORIGIN= Bruker BioSpin GmbH
+##OWNER= nmrsu
+$$ 2024-03-27 10:08:20.110 -0700  nmrsu@CZC1517BBD
+$$ /opt/PV-360.3.5/exp/stan/nmr/par/standard1D/outd
+$$ process /opt/PV-360.3.5/prog/mod/expinstall
+##$CURPLOT= <>
+##$CURPRIN= <$>
+##$DFORMAT= <normdp>
+##$LAYOUT= <+/1D_H.xwp>
+##$LFORMAT= <normlp>
+##$PFORMAT= <normpl>
+##END=

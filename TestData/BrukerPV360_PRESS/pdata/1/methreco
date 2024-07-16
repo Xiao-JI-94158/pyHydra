@@ -1,0 +1,35 @@
+##TITLE=Parameter List, ParaVision 360 V3.5
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=pciuser
+$$ Write Options: Symbolic Enums, RLE encoded arrays, symbol visibility
+$$ 2024-07-15 09:53:58.201 -0700  pciuser@czc1517bbd
+$$ /opt/nmrdata/PV-360.3.5/data/pciuser/20240715_093832_Urea_20240715_hpSSFP_SeqTest_0_1_28/2/pdata/1/methreco
+$$ process /opt/PV-360.3.5/prog/bin/parxserver
+##$RetroFrequencyLock_OnOff=Off
+##$Edc_OnOff=Off
+##$EdcManualFilter=No
+##$EdcFilterWidthHz=120
+##$CalcLineWidth=Off
+##$LineWidth=( 1, 1, 1 )
+0
+##$PVM_SpectAutoProcessing=No
+##$PVM_SpectAutoPhaseCorr=( 1 )
+No
+##$PVM_SpectExpLineBroadening=( 1 )
+No
+##$PVM_SpectExpLineBroadeningHz=( 1 )
+0.01
+##$PVM_SpectAutoBaselineCorr=( 1 )
+No
+##$PVM_SpectZeroFillingFactor=( 1 )
+1
+##$PVM_SpectAutoProcessingPpmRange=( 1, 2 )
+4 1
+##$PVM_SpectAutoProcessingPeakNoiseRatio=10
+##$MGJedPhaseDifference=0
+$$ @vis= MethodRecoGroup RetroFrequencyLock_OnOff Edc_OnOff CalcLineWidth
+$$ @vis= SpectAutoProcessing PVM_SpectAutoProcessing
+##END=
+$$ File finished by PARX at 2024-07-15 09:53:58.201 -0700

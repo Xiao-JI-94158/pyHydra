@@ -1,0 +1,38 @@
+##TITLE= Audit trail, TopSpin 4.3.0
+##JCAMPDX= 5.01
+##ORIGIN= Bruker BioSpin GmbH
+##OWNER= pciuser
+$$ /opt/nmrdata/PV-360.3.5/data/pciuser/20240715_093832_Urea_20240715_hpSSFP_SeqTest_0_1_28/2/pv2tsdata/1/pdata/1/auditp.txt
+##AUDIT TRAIL=  $$ (NUMBER, WHEN, WHO, WHERE, PROCESS, VERSION, WHAT)
+(   1,<2024-07-15T10:01:00.737-0700>,<pciuser>,<CZC1517BBD>,<parx>,<TopSpin 4.3.0>,
+      <Created by ParaVision>)
+(   2,<2024-07-15T10:01:01.016-0700>,<pciuser>,<CZC1517BBD>,<proc1d>,<TopSpin 4.3.0>,
+      <Start of raw data processing
+       em LB = 1 SI = 4K 
+       data hash MD5: 4K
+       53 10 57 94 8B 80 B3 FB A8 3E CF 7F C2 28 CA 3E>)
+(   3,<2024-07-15T10:01:01.032-0700>,<pciuser>,<CZC1517BBD>,<proc1d>,<TopSpin 4.3.0>,
+      <ft FT_mod = 6 PKNL = 1 SI = 4K 
+       data hash MD5: 4K
+       D0 FA E9 87 A1 CA F9 4E 59 63 DC 7B 26 BE BC 98>)
+(   4,<2024-07-15T10:01:01.061-0700>,<pciuser>,<CZC1517BBD>,<proc1d>,<TopSpin 4.3.0>,
+      <apk 
+       data hash MD5: 4K
+       5B D1 CF DB AF 2E 9F EB 44 78 FA 1B 8C B0 E9 16>)
+(   5,<2024-07-15T10:01:01.363-0700>,<pciuser>,<CZC1517BBD>,<proc1d>,<TopSpin 4.3.0>,
+      <abs n ABSG = 5 
+       data hash MD5: 4K
+       39 05 4B C1 D9 11 6C 1B ED 01 EF E3 19 E9 06 AB>)
+(   6,<2024-07-15T10:01:06.615-0700>,<pciuser>,<CZC1517BBD>,<proc1d>,<TopSpin 4.3.0>,
+      <Start of raw data processing
+       ft FT_mod = 6 PKNL = 1 SI = 4K 
+       data hash MD5: 4K
+       52 94 95 E3 AF C8 9F 50 3F BB CF A7 D1 BE 26 F0>)
+(   7,<2024-07-15T10:01:08.003-0700>,<pciuser>,<CZC1517BBD>,<proc1d>,<TopSpin 4.3.0>,
+      <apk 
+       data hash MD5: 4K
+       E6 20 B8 83 1E 10 C3 DC 4B D6 22 BD F8 0E 3F 95>)
+##END=
+
+$$ hash MD5
+$$ 70 6C D3 B7 F6 E5 CC 93 3E AA 66 CA 93 99 C5 27
