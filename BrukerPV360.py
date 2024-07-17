@@ -293,11 +293,15 @@ class BrukerPV360Exp():
 
         for key, value in self.dataset['PROC_DATA'].items():
             for idx, rd_path in enumerate(value):
-                print(key, value, idx)
-                if key=='fid':
-                    pass
-                elif key=='2dseq':
+                if (self.post_processing_params['is_verbose']):
+                    print(key, value, idx)
+                if key=='2dseq':
                     self.dataset['PROC_DATA'][key][idx] = self._process_2dseq(rd_path)
+                elif key=='fid':
+                    pass
+                else:
+                    pass
+                    
 
 
     
@@ -319,6 +323,6 @@ class BrukerPV360Exp():
         """
         Read and reshape the 2dseq image, which is reconstructed with Bruker algorithm and stored in Bruker format.
         """
-        raw_2dseq = np.fromfile(file=rawdata_path, dtype='int32')
+        raw_2dseq = np.fromfile(file=rawdata_path, dtype='int16')
         
         return raw_2dseq
