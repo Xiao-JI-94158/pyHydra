@@ -1,15 +1,17 @@
 """
-Python class that reads rawdata generated from Bruker ParaVision 6 environment
+Python class that reads rawdata generated from Bruker ParaVision 360.3.5 environment
 
-Testing examples are privided in the corresponing Jupyter Notebook (BrukerPV6.ipynb)
+Testing examples are privided in the corresponing Jupyter Notebook (BrukerPV360.ipynb)
 """
 
 # Official packages
 import os
 import copy
+import re
 
 from typing import List, Dict
 from pprint import pprint
+from collections import defaultdict
 
 # Third-party packages
 import numpy as np
@@ -25,35 +27,21 @@ POST_PROCESSING_PARAMETERS = {
     'is_verbose'                : False
 }
 
-RAW_DATA_SET = {
-    'rawdata'   : 'rawdata',
-    'fid'       : 'pdata/1/fid_proc.64',
-    # pdata subdir might not exist due to user config (not performing factory reconstruction)
-    '2dseq'     : 'pdata/1/2dseq'
-}
+RAW_DATA_FILE_LIST  = ['rawdata']
+RAW_PARAM_FILE_LIST = ['acqp',  'method']
 
-ACQ_PARAM_SET = {
-    'acqp'      : 'acqp',
-    'acqp.out'  : 'acqp.out',
-    'configscan': 'configscan',
-    'method'    : 'method'
-}
-
-RECO_PARAM_SET = {
-    'id'        : 'pdata/1/id',
-    'methreco'  : 'pdata/1/methreco',
-    'reco'      : 'pdata/1/reco',
-    'reco.out'  : 'pdata/1/reco.out',
-    'visu_pars' : 'pdata/1/visu_pars'
-}
-
+PROC_DATA_FILE_LIST = ['fid', '2dseq']
+PROC_PARAM_FILE_LIST= ['reco', 'visu_pars']
 
 DATA_COLLECTION_TEMPLATE = {
     'rawdata'   : None,
-    '2dseq'     : None,
-    'dicom'     : None
+    '2dseq'     : None
 }
 
+PARAM_COLLECTION_TEMPLATE = {
+    'ACQ'       : None,
+    'PROC'      : None
+}
 
 class BrukerPV360Exp():
     """
@@ -73,35 +61,28 @@ class BrukerPV360Exp():
         """
         0. update params for post-processing:
     
-        1. validate experiment dataset:
-            1.1 data files:
-                must        : rawdata.jobX, 
-                optional    : fid_proc.64, 2dseq, dicom
-            1.2 param files:
-
+        1. validate dataset files:
         
-        2. update dataset_dict['PARAM']:
+        2. update param_collection:
 
         3. update data_collection:
 
-        4. perform reconstruction:
-
         """
-    
+        # Step 0
         self.post_processing_params = self._update_post_processing_params(kwargs)
-
+        
         if (self.post_processing_params['is_verbose']):
-            print(exp_dataset_path)
+            print(f'Input directory: {exp_dataset_path}')
         
-        self.dataset = {"DATA": None, "PARAM": None}
+        # Step 1
+        self.dataset = self._validate_dataset_files(exp_dataset_path)
 
-        self._validate_dataset_files(exp_dataset_path)
-
-        self._update_dataset_param()       
+        # Step 2
+        self._update_acq_params()  
+        
+        # Step 3
         self._update_dataset_data()
-        
-        self.dataset['DATA']['2dseq'] = self._process_2dseq()
-        self.dataset['DATA']['fid'] = self._process_fid()    
+
         
     def _update_post_processing_params(self, kwargs):
         """
@@ -111,96 +92,73 @@ class BrukerPV360Exp():
         recon_params.update((k, kwargs[k]) for k in (recon_params.keys() & kwargs.keys()) )
         return recon_params  
 
-    def _validate_dataset_files(self, exp_dataset_path):
+    def _validate_dataset_files(self, exp_dataset_path)->Dict:
         """
         Confirm that the given path of experimental dataset is valid
         """
-        if (not (os.path.isdir(exp_dataset_path))):
-            raise OSError(f"Given directory of Experiment ({exp_dataset_path}) does not exist")
-        
-        self._validate_data_files(exp_dataset_path)
-        self._validate_param_files(exp_dataset_path)
 
-        
+        raw_data_paths = self._extract_raw_path( exp_dataset_path, key_list=RAW_DATA_FILE_LIST)
+        raw_param_paths = self._extract_raw_path( exp_dataset_path, key_list=RAW_PARAM_FILE_LIST)
 
-    def _validate_data_files(self, exp_dataset_path)->Dict:
-        """
-        1.1 data files:
-            must        : rawdata.jobX
-            optional    : 2dseq
-                          fid_proc.64
-                          dicom
-        """
-        data_dict = RAW_DATA_SET 
-     
-        self.dataset['DATA'] = self._complete_abs_path(data_dict, exp_dataset_path) 
-
-        for key, val in self.dataset['DATA'].items():
-            if (not os.path.exists(val)):
-                
-                self.dataset['DATA'][key] = None
-       
-        if ((self.dataset['DATA']['fid'] == None) and (self.dataset['DATA']['rawdata'] == None)):
-                raise FileNotFoundError(f"Cannot find raw data file, neither fid nor ser, in the given directory of Experiment ({exp_dataset_path})")
+        processed_data_dir = os.path.join(exp_dataset_path, 'pdata')
         
+        proc_data_paths=self._extract_proc_path( processed_data_dir, key_list=PROC_DATA_FILE_LIST)                                    
+        proc_param_paths=self._extract_proc_path( processed_data_dir, key_list=PROC_PARAM_FILE_LIST)
+ 
         if (self.post_processing_params['is_verbose']):
-            print('end of _validate_data_files')
-            pprint(self.dataset['DATA'])
+            print('end of dataset file validation')
+            pprint(f'Found raw data files:')
+            pprint(raw_data_paths)
+            pprint(f'Found raw parameter files:')
+            pprint(raw_param_paths)
+            pprint(f'Found proc data files: ')
+            pprint(proc_data_paths)
+            pprint(f'Found proc parameter files: ')
+            pprint(proc_param_paths)
 
-    def _validate_param_files(self, exp_dataset_path)->Dict:
-        """
-        1.2 param files:
-            must        : acqp, method, visu_pars
-            optional    : acqu, acqus, procs, reco        
-        """
-        param_dict = (ACQ_PARAM_SET | RECO_PARAM_SET)   
-        self.dataset['PARAM'] = self._complete_abs_path(param_dict, exp_dataset_path)
+        dataset = {
+                    'ACQ_DATA'  : raw_data_paths ,
+                    'PROC_DATA' : proc_data_paths,
+                    'ACQ_PARAM' : raw_param_paths,
+                    'PROC_PARAM': proc_param_paths,
+                   }
 
-        for key, val in self.dataset['PARAM'].items():
-            if (not os.path.isfile(val)):
-                self.dataset['DATA'][key] = None
-
-        for key in ['acqp', 'method', 'visu_pars']:
-            if (self.dataset['PARAM'][key] == "None"):
-                raise FileNotFoundError(f"Cannot find {key} file in the given directory of Experiment ({exp_dataset_path})")
+        return dataset
         
 
+    def _extract_raw_path(self, raw_file_dir, key_list):
+        raw_paths = defaultdict(list)
 
-    def _complete_abs_path(self, dp_dict, exp_dataset_path):
+        for rfile_key in key_list:
+            for rfile_name in os.scandir(raw_file_dir):
+                rfile_path = os.path.join(rfile_name)
+                if (rfile_key in rfile_path):
+                    if (os.path.isfile(rfile_path)):
+                        raw_paths[rfile_key].append(rfile_path)
+        return dict(raw_paths)
+
+    def _extract_proc_path(self, proc_file_dir, key_list):
+        proc_paths = defaultdict(list)
+
+        if (os.path.isdir(proc_file_dir)):
+            for pfile_key in key_list:
+                for proc_nbr in os.scandir(proc_file_dir):
+                    proc_nbr_path = os.path.join(proc_nbr)
+                    if (os.path.isdir(proc_nbr_path)):
+                        for pfile_name in os.scandir(proc_nbr_path):
+                            pfile_path = os.path.join(pfile_name)
+                            if ((pfile_key in pfile_path)):
+                                if (os.path.isfile(pfile_path)):
+                                    proc_paths[pfile_key].append(pfile_path)
+        return dict(proc_paths)
+
+    def _update_acq_params(self):
         """
         """
-        ret_dict = copy.deepcopy(dp_dict)
-        
-        for key, value in ret_dict.items():
-            abs_path = os.path.join(exp_dataset_path, value)
-            ret_dict[key] = abs_path
-        
-        return ret_dict
+        for key, value in self.dataset['ACQ_PARAM'].items():
+            temp_dict = self._read_param_dicts(value[0])
 
-
-    def _update_dataset_param(self):
-        """
-        """
-        param_dict = {}
-        for key, value in self.dataset['PARAM'].items():
-            temp_dict = self._read_param_dicts(value)
-            param_dict = (param_dict | temp_dict)
-        
-        self.dataset['PARAM'] = param_dict
-        
-    
-    def _update_dataset_data(self):
-
-        data = copy.deepcopy(DATA_COLLECTION_TEMPLATE)
-        
-        if self.dataset['DATA']['2dseq']:
-            data['2dseq'] = self.dataset['DATA']['2dseq']
-        if self.dataset['DATA']['fid']:
-            data['fid'] = self.dataset['DATA']['fid']
-        if self.dataset['DATA']['ser']:
-            data['ser'] = self.dataset['DATA']['ser']
-
-        self.dataset['DATA'] = data
+        self.dataset['ACQ_PARAM'][key] = temp_dict
 
     def _read_param_dicts(self, param_file_path):
         """
@@ -221,7 +179,7 @@ class BrukerPV360Exp():
                 if line.startswith('##$'):
 
                     (param_name, current_line) = line[3:].split('=') # split at "="
-
+                    
                     # if current entry (current_line) is arraysize
                     if current_line[0:2] == "( " and current_line[-3:-1] == " )":
                         value = self._parse_array(f, current_line)
@@ -244,7 +202,14 @@ class BrukerPV360Exp():
                     param_dict[param_name] = value
 
         return param_dict
-        
+
+    def _flatten(self, l):
+        if not isinstance(l, list):
+            return [l]
+        flat = []
+        for sublist in l:
+            flat.extend(self._flatten(sublist))
+        return flat
 
     def _parse_array(self, current_file, line):
         """
@@ -252,7 +217,10 @@ class BrukerPV360Exp():
         """
         # extract the arraysize and convert it to numpy
         line = line[1:-2].replace(" ", "").split(",")
-        arraysize = np.array([int(x) for x in line])
+        try:
+            arraysize = np.array([int(x) for x in line])
+        except ValueError:
+            return line
 
         # then extract the next line
         vallist = current_file.readline().split()
@@ -263,27 +231,32 @@ class BrukerPV360Exp():
         except ValueError:
             return " ".join(vallist)
 
-        """
-        # xji20240712: 
-            PV360 introduced new syntax to reduce the length of parameter file:
-                e.g., '##$P=(', '64', ')', '128', '@63*(0)' means: for parameter <P> of 64 elements, of which the first is 128 and the rest 63 are 0.
-            We are then first to allocate a 
-
-        """
-        
         # include potentially multiple lines
         while len(vallist) != np.prod(arraysize):
-            vallist = vallist + current_file.readline().split()
+            new_line =  current_file.readline()
+            if ('##$' in new_line):
+                break
+            elif ('@' in new_line):
+                if ('*' in new_line):
+                    vallist = vallist + new_line.split()
+                else:
+                    break
+            else:
+                vallist = vallist + new_line.split()
 
         # try converting to int, if error, then to float
-        try:
-            vallist = [int(x) for x in vallist]
-        except ValueError:
+        for idx, val in enumerate(vallist):
             try:
-                vallist = [float(x) for x in vallist]
+                vallist[idx] = int(val)
             except ValueError:
-                print(line)
-                print(arraysize, np.shape(vallist), vallist)
+                try:
+                    vallist[idx] = float(val)
+                except ValueError:
+                        if (('@' in val) and ('*' in val)):
+                            res = re.findall(r"\d+", val)
+                            reps, value = [int(x) for x in res]
+                            vallist[idx] = [value] * reps
+                            vallist= self._flatten(vallist)
 
         """
         # This block below is the original code from Ref: https://github.com/jdoepfert/brukerMRI
@@ -312,73 +285,40 @@ class BrukerPV360Exp():
                 result = val.rstrip('\n')
 
         return result    
-
-    def _process_2dseq(self):
-        """
-        Read and reshape the 2dseq image, which is reconstructed with Bruker algorithm and stored in Bruker format.
-        """
-        _raw_2dseq_dtype = self.dataset['PARAM']['VisuCoreWordType']
-        _raw_2dseq_b_order = self.dataset['PARAM']['VisuCoreByteOrder']
-
-        if ((_raw_2dseq_dtype == '_16BIT_SGN_INT') and (_raw_2dseq_b_order == 'littleEndian')):
-            raw_2dseq = np.fromfile(file=self.dataset['DATA']['2dseq'], dtype='int16')
-        
-        data_shape = np.append(self.dataset['PARAM']['NR'], -1)
-
-        raw_2dseq = np.reshape(raw_2dseq, data_shape)
-        
-        return raw_2dseq
     
-    def _process_fid(self):
+    def _update_dataset_data(self):
+        for key, value in self.dataset['ACQ_DATA'].items():
+            for idx, rd_path in enumerate(value):
+                self.dataset['ACQ_DATA'][key][idx] = self._process_rawdata(rd_path)
+
+        for key, value in self.dataset['PROC_DATA'].items():
+            for idx, rd_path in enumerate(value):
+                print(key, value, idx)
+                if key=='fid':
+                    pass
+                elif key=='2dseq':
+                    self.dataset['PROC_DATA'][key][idx] = self._process_2dseq(rd_path)
+
+
+    
+    def _process_rawdata(self, rawdata_path):
         """
         Read binary fid into cmplx128 format, and partition into transients.
         """
-        raw_fids = self._read_binary_fid()
-        raw_fids = self._deserialize_binary_fid(raw_fids)
-        raw_fids = np.asarray(np.array_split(raw_fids, self.dataset['PARAM']["NR"]))
-        return raw_fids
+        #_raw_fid_dtype = self.dataset['ACQ_PARAM']['ACQ_word_size']
+        raw_fid = np.fromfile(file=rawdata_path, dtype='int32')
 
-    def _read_binary_fid(self) -> np.ndarray:
-        """
-        """
-        _raw_fid_dtype = self.dataset['PARAM']['GO_raw_data_format']
-        if (_raw_fid_dtype == 'GO_32BIT_SGN_INT') :
-            fid = np.fromfile(file=self.dataset['DATA']['fid'], dtype='int32')
+        cmplx_fid = np.asarray(raw_fid[0::2, ...] + 1j * raw_fid[1::2, ...])
+        cmplx_fid.astype(np.complex128)
 
-        else:
-            raise TypeError( f'Raw FID data in Unknown Datatype ({_raw_fid_dtype})' )
-        return fid
+        
+        return cmplx_fid
+
     
-    def _deserialize_binary_fid(self, fid) -> np.ndarray:
-        fid = np.asarray(fid[0::2, ...] + 1j * fid[1::2, ...])
-        fid.astype(np.complex128)
-        return fid
-    
-    def _process_raw(self, raw_type):
-        raw_fids = self._read_binary(raw_type)
-        raw_fids = self._deserialize_binary_cmplx(raw_fids)
-        raw_fids = np.asarray(np.array_split(raw_fids, self.dataset['PARAM']["NR"]))
-        return raw_fids
-
-    def _read_binary(self, raw_type) -> np.ndarray:
+    def _process_2dseq(self, rawdata_path):
         """
+        Read and reshape the 2dseq image, which is reconstructed with Bruker algorithm and stored in Bruker format.
         """
-        _raw_fid_dtype = self.dataset['PARAM']['GO_raw_data_format']
-        if (_raw_fid_dtype == 'GO_32BIT_SGN_INT') :
-            fid = np.fromfile(file=self.dataset['DATA'][raw_type], dtype='int32')
-
-        else:
-            raise TypeError( f'Raw FID data in Unknown Datatype ({_raw_fid_dtype})' )
-        return fid
-    
-    def _deserialize_binary_cmplx(self, fid) -> np.ndarray:
-        fid = np.asarray(fid[0::2, ...] + 1j * fid[1::2, ...])
-        fid.astype(np.complex128)
-        return fid
-    
-    def _fit_proj_baseline(self, proj, lambda_fit):
-        baseline_fitter = Baseline(x_data=proj)                     
-        return baseline_fitter.aspls(proj, lam=lambda_fit)[0]
-
-    def _normalize_splines(self):
-        return NotImplemented
+        raw_2dseq = np.fromfile(file=rawdata_path, dtype='int32')
+        
+        return raw_2dseq

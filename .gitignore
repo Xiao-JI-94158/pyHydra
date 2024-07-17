@@ -166,3 +166,4 @@ cython_debug/
 .conda/
 BrukerPV6TestData/
 BrukerPV360TestData/
+test.ipynb
