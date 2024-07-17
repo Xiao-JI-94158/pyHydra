@@ -78,10 +78,10 @@ class BrukerPV360Exp():
         self.dataset = self._validate_dataset_files(exp_dataset_path)
 
         # Step 2
-        self._update_acq_params()  
+        self._update_params()  
         
         # Step 3
-        self._update_dataset_data()
+        self._update_data()
 
         
     def _update_post_processing_params(self, kwargs):
@@ -117,10 +117,8 @@ class BrukerPV360Exp():
             pprint(proc_param_paths)
 
         dataset = {
-                    'ACQ_DATA'  : raw_data_paths ,
-                    'PROC_DATA' : proc_data_paths,
-                    'ACQ_PARAM' : raw_param_paths,
-                    'PROC_PARAM': proc_param_paths,
+                    'DATA'  : (raw_data_paths|proc_data_paths) ,
+                    'PARAM' : (raw_param_paths|proc_param_paths)
                    }
 
         return dataset
@@ -152,13 +150,15 @@ class BrukerPV360Exp():
                                     proc_paths[pfile_key].append(pfile_path)
         return dict(proc_paths)
 
-    def _update_acq_params(self):
+    def _update_params(self):
         """
         """
-        for key, value in self.dataset['ACQ_PARAM'].items():
-            temp_dict = self._read_param_dicts(value[0])
-
-        self.dataset['ACQ_PARAM'][key] = temp_dict
+        for key, paths in self.dataset['PARAM'].items():
+            for idx, entry in enumerate(paths):    
+                
+                temp_dict = self._read_param_dicts(entry)
+                
+                self.dataset['PARAM'][key][idx]= temp_dict
 
     def _read_param_dicts(self, param_file_path):
         """
@@ -286,32 +286,37 @@ class BrukerPV360Exp():
 
         return result    
     
-    def _update_dataset_data(self):
-        for key, value in self.dataset['ACQ_DATA'].items():
-            for idx, rd_path in enumerate(value):
-                self.dataset['ACQ_DATA'][key][idx] = self._process_rawdata(rd_path)
-
-        for key, value in self.dataset['PROC_DATA'].items():
+    def _update_data(self):
+        for key, value in self.dataset['DATA'].items():
             for idx, rd_path in enumerate(value):
                 if (self.post_processing_params['is_verbose']):
-                    print(key, value, idx)
-                if key=='2dseq':
-                    self.dataset['PROC_DATA'][key][idx] = self._process_2dseq(rd_path)
+                    pprint(key, value, idx)
+                
+                if key=='rawdata':
+                    self.dataset['DATA'][key][idx] = self._process_rawdata(rd_path)
+                elif key=='2dseq':
+                    self.dataset['DATA'][key][idx] = self._process_2dseq(rd_path)
                 elif key=='fid':
                     pass
                 else:
                     pass
-                    
-
-
+                
     
     def _process_rawdata(self, rawdata_path):
         """
-        Read binary fid into cmplx128 format, and partition into transients.
+        Read binary rawdata/FID into 1D np.array of cmplx128
         """
-        #_raw_fid_dtype = self.dataset['ACQ_PARAM']['ACQ_word_size']
-        raw_fid = np.fromfile(file=rawdata_path, dtype='int32')
-
+        _rawdata_dtype = self.dataset['PARAM']['acqp'][0]['ACQ_word_size']
+        if (_rawdata_dtype=='_16_BIT'):
+            _rawdata_dtype='int16'
+        elif (_rawdata_dtype=='_32_BIT'):
+            _rawdata_dtype='int32'
+        elif (_rawdata_dtype=='_64_BIT'):
+            _rawdata_dtype='int64'
+        else:
+            raise TypeError( f'Raw FID data in Unknown Datatype ({_rawdata_dtype})' )
+        
+        raw_fid = np.fromfile(file=rawdata_path, dtype=_rawdata_dtype)
         cmplx_fid = np.asarray(raw_fid[0::2, ...] + 1j * raw_fid[1::2, ...])
         cmplx_fid.astype(np.complex128)
 
@@ -319,10 +324,20 @@ class BrukerPV360Exp():
         return cmplx_fid
 
     
-    def _process_2dseq(self, rawdata_path):
+    def _process_2dseq(self, data2dseq_path):
         """
-        Read and reshape the 2dseq image, which is reconstructed with Bruker algorithm and stored in Bruker format.
+        Read 2dseq image as 1-D np.array, which is reconstructed with Bruker algorithm and stored in Bruker format.
         """
-        raw_2dseq = np.fromfile(file=rawdata_path, dtype='int16')
         
+        _2dseq_dtype = self.dataset['PARAM']['reco'][1]['RECO_wordtype']
+        if (_2dseq_dtype=='_16BIT_SGN_INT'):
+            _2dseq_dtype = 'int16'
+        elif (_2dseq_dtype=='_32BIT_SGN_INT'):
+            _2dseq_dtype = 'int32'
+        elif (_2dseq_dtype=='_32BIT_FLOAT'):
+            _2dseq_dtype = 'float32'
+        else:
+            raise TypeError( f'Raw FID data in Unknown Datatype ({_2dseq_dtype})' )
+        
+        raw_2dseq = np.fromfile(file=data2dseq_path, dtype=_2dseq_dtype)
         return raw_2dseq

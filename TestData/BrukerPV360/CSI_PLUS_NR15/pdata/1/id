@@ -1,0 +1,15 @@
+##TITLE=Parameter List, ParaVision 360 V3.5
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=Sriram
+$$ Write Options: Symbolic Enums
+$$ 2024-06-17 12:14:39.147 -0700  Sriram@czc1517bbd
+$$ /opt/PV-360.3.5/data/Sriram/20240617_101207_UreaSphere_20240617_CSI_Protocol_1_1/21/pdata/1/id
+$$ process /opt/PV-360.3.5/prog/bin/parxserver
+##$DATASET_KEY=( 65 )
+<2.16.756.5.5.200.604667140.33937.1718651678.1646>
+##$DATASET_Modality=MR_Modality
+##$DATASET_ExperimentValid=Yes
+##END=
+$$ File finished by PARX at 2024-06-17 12:14:39.147 -0700
