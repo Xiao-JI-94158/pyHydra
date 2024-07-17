@@ -1,0 +1,14 @@
+##TITLE=Parameter List, ParaVision 360 V3.5
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=Sriram
+$$ Write Options: Symbolic Enums, RLE encoded arrays, symbol visibility
+$$ 2024-06-17 12:02:09.650 -0700  Sriram@czc1517bbd
+$$ /opt/PV-360.3.5/data/Sriram/20240617_101207_UreaSphere_20240617_CSI_Protocol_1_1/16/pdata/1/methreco
+$$ process /opt/PV-360.3.5/prog/bin/parxserver
+##$RetroFrequencyLock_OnOff=Off
+##$KFiltering=On
+$$ @vis= MethodRecoGroup RetroFrequencyLock_OnOff KFiltering
+##END=
+$$ File finished by PARX at 2024-06-17 12:02:09.650 -0700

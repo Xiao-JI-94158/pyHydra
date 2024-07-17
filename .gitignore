@@ -167,3 +167,4 @@ cython_debug/
 BrukerPV6TestData/
 BrukerPV360TestData/
 test.ipynb
+*.dcm
