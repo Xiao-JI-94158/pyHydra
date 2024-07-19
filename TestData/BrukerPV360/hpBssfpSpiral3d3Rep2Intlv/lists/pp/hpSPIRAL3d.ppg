@@ -1,0 +1,182 @@
+;****************************************************************
+;
+; Copyright (c) 2021
+; Bruker BioSpin MRI GmbH
+; D-76275 Ettlingen, Germany
+;
+; All Rights Reserved
+;
+; SPIRAL - A Spiral Imaging Pulse Program
+;
+;****************************************************************
+
+;===========================================================
+;   includes
+;===========================================================
+
+#include <MRI.include>
+#include <Spiral.mod>
+#include <Trajectory.mod>
+#include <PrepModulesHead.mod>
+
+;===========================================================
+;   trajectory measurement
+;===========================================================
+
+if (PVM_TrajAdjustmentRunning == Yes)
+{
+        subr trajPerform()
+}
+else
+{
+;===========================================================
+;   definitions
+;===========================================================
+
+define delay dGrad  = {$GradWait}               ; CFG_InterGradientWaitTime()
+define delay dFq    = {$FreqSwitch}             ; 0.01 ms
+define delay dRise  = {$RiseT}                  ; CFG_GradientRiseTime()
+define delay dSpoil = {$SliceSpoiler.dur}
+define delay dReph  = {$RephGradDur}
+define delay dRfc   = {$RfcSpoilDur}
+define delay dTE    = {$TEWait}
+define delay dTErfc = {$TEWaitRfc}
+define delay dTR    = {$TRWait}
+define delay dGoff1
+define delay dGoff2
+; xji20240718 - spiral delay
+define delay dSpiral = {$PVM_SpiralModuleTime}
+; convert to s
+"dRfc    = dRfc           * 0.001"
+"dGrad   = dGrad          * 0.001"
+"dFq     = dFq            * 0.001"
+"dRise   = dRise          * 0.001"
+"dSpoil  = dSpoil         * 0.001"
+"dReph   = dReph          * 0.001"
+"dTE     = dTE            * 0.001"
+"dTErfc  = dTErfc         * 0.001"
+"dTR     = dTR            * 0.001"
+
+"dGoff1  = dRise - de"
+"dGoff2  = dRise"
+
+"dSpiral = dSpiral        * 0.001"
+
+define list<frequency> freqTx = {$ACQ_O1_list}
+define list<frequency> freqRx = {$ACQ_O1B_list}
+
+define list<frequency>  metChShList = {$MetChShiftsList}
+define list<power>      VFAsPwrList = {$VFAsPowerList}
+
+#define r3d ACQ_spatial_phase_2
+grad_zero_for_gs <r3d>
+
+
+        INIT_DEVICES
+
+;----------------- preparation -----------------------------
+        0u         metChShList.res
+        0u         VFAsPwrList.res
+
+
+start,        
+        if (GradSync == Yes)
+        {
+                1u      GRAD_SYNC
+        }
+
+        dFq             freqRx(receive):f1
+        dFq             freqTx:f1
+
+        dSpoil          grad_ramp{0, 0, SliceSpoiler.ampl}
+        dRise           grad_off
+
+slice,  dGrad           metChShList:f1 
+
+
+; xji20240717-PreCatalyzer
+
+;----------------- pre-catalyzation ------------------------
+precat, dRise           VFAsPwrList:f1
+        (p0:sp0(currentpower) ph0):f1
+        dRise           
+        dReph           
+        dGoff1          
+        dGrad           VFAsPwrList.inc   
+        dSpiral
+        dReph           
+        dRise           
+        0u              
+        0u              ipp0
+        0u              
+        dTR
+        lo to precat times l10
+        
+;----------------- excitation ------------------------------
+
+ssfp,   dRise           VFAsPwrList:f1
+        (p0:sp0(currentpower) ph0):f1
+        dRise           
+        dReph           grad_ramp{0, 0, r3d * Phase3dGrad}
+        dGoff1          grad_off
+        dGrad           VFAsPwrList.inc   
+;        dTE
+;----------------- acquisition -----------------------------
+        subr spiralAcq(ph0, ph1)
+;----------------- phase rewinding -------------------------
+        dReph           grad_ramp{0, 0, r3d * (-Phase3dGrad)}
+        dRise           grad_off
+;----------------- loops -----------------------------------
+        0u              grad_matrix.inc
+        0u              ipp0
+        0u              r3d.inc
+        dTR
+        lo to ssfp times l2
+        
+        subr spiralLoop(ssfp)
+
+        0u              grad_matrix.res
+        0u              freqTx.res
+        0u              freqRx.res
+
+        lo to ssfp times NA
+        lo to ssfp times NAE
+;----------------- post-catalyzation -----------------------
+postcat,dRise           VFAsPwrList:f1
+        (p0:sp0(currentpower) ph0):f1
+        dRise           
+        dReph           
+        dGoff1          
+        dGrad           VFAsPwrList.inc   
+        dSpiral
+        dReph           
+        dRise           
+        0u              
+        0u              ipp0
+        0u              
+        dTR
+        lo to postcat times l10
+;----------------- pre-catalyzation ------------------------
+        0u              metChShList.inc
+        0u              freqTx.inc        
+        0u              freqRx.inc
+        0u              rpp0
+        lo to start times NR
+        0u     grad_matrix.res
+         
+        0u     metChShList.res
+        0u     VFAsPwrList.res
+
+        SETUP_GOTO(start)
+        ; don't use exit inside if/else blocks, instead QUIT
+        ; and EXIT at end of pulse program
+        QUIT
+}
+
+EXIT
+;============================================================
+;phase lists
+;============================================================
+
+ph0 = 0 2
+ph1 = 0 
