@@ -17,6 +17,8 @@ from collections import defaultdict
 import numpy as np
 import matplotlib.pyplot as plt
 
+import pyparsing as pp
+
 from scipy.interpolate import InterpolatedUnivariateSpline, CubicSpline
 
 #from pybaselines import Baseline
@@ -179,10 +181,14 @@ class BrukerPV360Exp():
                 if line.startswith('##$'):
 
                     (param_name, current_line) = line[3:].split('=') # split at "="
-                    
+                    if (self.post_processing_params['is_verbose']):
+                        pprint(param_name)
                     # if current entry (current_line) is arraysize
                     if current_line[0:2] == "( " and current_line[-3:-1] == " )":
-                        value = self._parse_array(f, current_line)
+                        value = self._parse_array(f, current_line, param_name)
+                        if ('SpiralShape1' in param_name):
+                            print(value[-50:])
+                        
 
                     # if current entry (current_line) is struct/list
                     elif current_line[0] == "(" and current_line[-3:-1] != " )":
@@ -200,6 +206,7 @@ class BrukerPV360Exp():
 
                     # save parsed value to dict
                     param_dict[param_name] = value
+                    
 
         return param_dict
 
@@ -211,7 +218,7 @@ class BrukerPV360Exp():
             flat.extend(self._flatten(sublist))
         return flat
 
-    def _parse_array(self, current_file, line):
+    def _parse_array(self, current_file, line, param_name):
         """
         Ref: https://github.com/jdoepfert/brukerMRI
         """
@@ -220,44 +227,97 @@ class BrukerPV360Exp():
         try:
             arraysize = np.array([int(x) for x in line])
         except ValueError:
-            return line
+            # when integer conversion fails, it means the values of the array are stored directly as string
+            
+            while True:
+                new_line =  current_file.readline()
+                if (new_line.startswith('##$')):
+                    
+                    break
+                elif (new_line.startswith('$$ ')):
+                    break
+                elif (new_line.startswith('$$ @')):
+                    break
+                else:
+                    line = line + new_line
+            return line.split(",") 
 
-        # then extract the next line
-        vallist = current_file.readline().split()
+        # if we can extract the arraysize, then read in the next line in buffer and try extracting values/entries
+        # first check if the format of entries:
+        #   1. each entry is a list
+        #   2. each entry is a string
+        #   3. each entry is a numeric value, either int or float
+        #       3.1 there is no shorthand notation, and thus the number of entries matches the arraysize
+        #       3.2 there is shorthand notation (e.g. @64*(0), which means 64 times string '0')
+        
+        # read next line, i.e. the first line of array content for parsing
+        
+        #vallist = current_file.readline().split()
+        
+        # read in all contents before next paramerter enters
+        buffer = current_file.readline()
+        while True:
+            last_pos = current_file.tell()
+            new_line =  current_file.readline()
+            if (new_line.startswith('##$')):
+                current_file.seek(last_pos)
+                break
+            elif (new_line.startswith('$$ ')):
+                break
+            elif (new_line.startswith('$$ @')):
+                break
+            else:
+                buffer = buffer + new_line
 
+        # Case 1, each entry is a list wrapped in a pair of ()
+        if ( (buffer[0]=='(') and  (buffer[-1]==')')):
+            # parse list entries by pair of matched parenthesis
+            vallist = pp.nestedExpr('(',')').parseString(buffer).asList()
+            return vallist
+
+        vallist = buffer.split()
+        # Case 2,
         # if the line was a string, then return it directly
         try:
             float(vallist[0])
         except ValueError:
             return " ".join(vallist)
 
-        # include potentially multiple lines
-        while len(vallist) != np.prod(arraysize):
-            new_line =  current_file.readline()
-            if ('##$' in new_line):
-                break
-            elif ('@' in new_line):
-                if ('*' in new_line):
-                    vallist = vallist + new_line.split()
-                else:
-                    break
-            else:
-                vallist = vallist + new_line.split()
-
-        # try converting to int, if error, then to float
-        for idx, val in enumerate(vallist):
-            try:
-                vallist[idx] = int(val)
-            except ValueError:
+        else:
+            """
+            for idx, val in enumerate(vallist):
                 try:
-                    vallist[idx] = float(val)
+                    vallist[idx] = int(val)
                 except ValueError:
-                        if (('@' in val) and ('*' in val)):
-                            res = re.findall(r"\d+", val)
-                            reps, value = [int(x) for x in res]
-                            vallist[idx] = [value] * reps
-                            vallist= self._flatten(vallist)
+                    try:
+                        vallist[idx] = float(val)
+                    except ValueError:
+                            if ((val.startswith('@')) and ('*' in val)):
+                                reps_regex = re.compile(r'^\@\d+\*')
+                                data_regex = re.compile(r'\([+-]?\d+(?:\.\d+)?\)$')
+                                reps = int(reps_regex.findall(val)[0][1:-1])
+                                data = float(data_regex.findall(val)[0][1:-1])
+                   
+                                vallist[idx:idx+1] = [data] * reps
+                                if ('SpiralShape1' in param_name):
+                                    print("1", vallist[-50:])
+            
+            if ('SpiralShape1' in param_name):
+                            print( '2',vallist[-50:])
+            """
+            for idx, val in enumerate(vallist):
+                if (type(val) == str):
+                    if ((val.startswith('@')) and ('*' in val)):
+                        reps_regex = re.compile(r'^\@\d+\*')
+                        data_regex = re.compile(r'\([+-]?\d+(?:\.\d+)?\)$')
+                        reps = int(reps_regex.findall(val)[0][1:-1])
+                        data = float(data_regex.findall(val)[0][1:-1])
+                    
+                        vallist[idx:idx+1] = [data] * reps
+            if ('SpiralShape1' in param_name):
+                print("1", vallist[-50:])
 
+ 
         """
         # This block below is the original code from Ref: https://github.com/jdoepfert/brukerMRI
         # For our purpose, we return all numerical types in format of numpy.ndarray, regardless of its length
@@ -269,6 +329,7 @@ class BrukerPV360Exp():
             else:
                 return vallist[0]
         """
+        
         return np.reshape(np.array(vallist), arraysize)
 
     def _parse_single_value(self, val):
@@ -341,3 +402,5 @@ class BrukerPV360Exp():
         
         raw_2dseq = np.fromfile(file=data2dseq_path, dtype=_2dseq_dtype)
         return raw_2dseq
+    
+
