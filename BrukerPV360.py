@@ -186,9 +186,6 @@ class BrukerPV360Exp():
                     # if current entry (current_line) is arraysize
                     if current_line[0:2] == "( " and current_line[-3:-1] == " )":
                         value = self._parse_array(f, current_line, param_name)
-                        if ('SpiralShape1' in param_name):
-                            print(value[-50:])
-                        
 
                     # if current entry (current_line) is struct/list
                     elif current_line[0] == "(" and current_line[-3:-1] != " )":
@@ -312,10 +309,7 @@ class BrukerPV360Exp():
                         data_regex = re.compile(r'\([+-]?\d+(?:\.\d+)?\)$')
                         reps = int(reps_regex.findall(val)[0][1:-1])
                         data = float(data_regex.findall(val)[0][1:-1])
-                    
                         vallist[idx:idx+1] = [data] * reps
-            if ('SpiralShape1' in param_name):
-                print("1", vallist[-50:])
 
  
         """
@@ -330,7 +324,7 @@ class BrukerPV360Exp():
                 return vallist[0]
         """
         
-        return np.reshape(np.array(vallist), arraysize)
+        return np.reshape(np.array(vallist), arraysize).astype(np.float32)
 
     def _parse_single_value(self, val):
         """
