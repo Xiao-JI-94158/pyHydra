@@ -1,0 +1,185 @@
+;****************************************************************
+;
+; Copyright (c) 2021
+; Bruker BioSpin MRI GmbH
+; D-76275 Ettlingen, Germany
+;
+; All Rights Reserved
+;
+; SPIRAL - A Spiral Imaging Pulse Program
+;
+;****************************************************************
+
+;===========================================================
+;   includes
+;===========================================================
+
+#include <MRI.include>
+#include <Spiral.mod>
+#include <Trajectory.mod>
+#include <PrepModulesHead.mod>
+
+;===========================================================
+;   trajectory measurement
+;===========================================================
+
+if (PVM_TrajAdjustmentRunning == Yes)
+{
+        subr trajPerform()
+}
+else
+{
+;===========================================================
+;   definitions
+;===========================================================
+
+define delay dGrad  = {$GradWait}               ; CFG_InterGradientWaitTime()
+define delay dFq    = {$FreqSwitch}             ; 0.01 ms
+define delay dRise  = {$RiseT}                  ; CFG_GradientRiseTime()
+define delay dSpoil = {$SliceSpoiler.dur}
+define delay dReph  = {$RephGradDur}
+define delay dRfc   = {$RfcSpoilDur}
+define delay dTE    = {$TEWait}
+define delay dTErfc = {$TEWaitRfc}
+define delay dTR    = {$TRWait}
+define delay dGoff1
+define delay dGoff2
+
+; convert to s
+"dRfc    = dRfc           * 0.001"
+"dGrad   = dGrad          * 0.001"
+"dFq     = dFq            * 0.001"
+"dRise   = dRise          * 0.001"
+"dSpoil  = dSpoil         * 0.001"
+"dReph   = dReph          * 0.001"
+"dTE     = dTE            * 0.001"
+"dTErfc  = dTErfc         * 0.001"
+"dTR     = dTR            * 0.001"
+
+if (PVM_SignalType == SignalType_Fid) {
+        "dGoff1 = dRise - de"
+        "dGoff2 = dRise"
+}
+if (PVM_SignalType == SignalType_Echo) {
+        "dGoff1 = dRise"
+        "dGoff2 = dRise - de"
+}
+
+define list<frequency> freqTx = {$ACQ_O1_list}
+define list<frequency> freqRx = {$ACQ_O1B_list}
+
+#define r3d ACQ_spatial_phase_2
+grad_zero_for_gs <r3d>
+
+
+        INIT_DEVICES
+
+;----------------- preparation -----------------------------
+
+        subr SatTransInit()
+        subr TriggerOutStart()
+
+start,
+        subr TriggerPhase()
+        subr TriggerOutVolume()
+        subr Tagging()
+
+
+slice,  dTR
+        subr TriggerSlice()
+        subr TriggerOutSlice()
+
+        if (GradSync == Yes)
+        {
+                1u      GRAD_SYNC
+        }
+
+        subr FovSat()
+        subr SatTrans()
+        subr FatSup()
+
+        dFq             freqRx(receive):f1
+        dFq             freqTx:f1
+
+
+movie,  dGrad
+        dSpoil          grad_ramp{0, 0, SliceSpoiler.ampl}
+
+;----------------- excitation ------------------------------
+
+        dRise           grad_ramp{0, 0, SliceGrad}
+        (p0:sp0 ph0):f1
+        dRise           grad_off
+        dReph           grad_ramp{0, 0, -SliceRephGrad + r3d * Phase3dGrad}
+        dGoff1          grad_off
+        dGrad
+        dTE
+
+;----------------- refocusing ------------------------------
+
+        if (PVM_SignalType == SignalType_Echo)
+        {
+                dRfc           grad_ramp{0, 0, RfcSpoilGrad}
+                dRise           grad_ramp{0, 0, SliceGrad}
+                (p1:sp1 ph1):f1
+                dRfc           grad_ramp{0, 0, RfcSpoilGrad}
+                dGoff2         grad_off
+                dGrad
+                dTErfc
+        }
+
+;----------------- acquisition -----------------------------
+
+        subr spiralAcq(ph0, ph1)
+
+;----------------- phase rewinding -------------------------
+
+        if (PVM_SpatDim == 3)
+        {
+                dReph           grad_ramp{0, 0, r3d * (-Phase3dGrad)}
+                dRise           grad_off
+        }
+
+;----------------- loops -----------------------------------
+
+        lo to movie times PVM_NMovieFrames
+        0u              grad_matrix.inc
+        0u              freqTx.inc
+        0u              freqRx.inc
+
+        lo to slice times NSLICES
+        0u              ipp0
+        0u              grad_matrix.res
+        0u              freqTx.res
+        0u              freqRx.res
+
+        lo to start times NA
+        0u              rpp0
+
+        subr spiralLoop(start)
+
+        0u              r3d.inc
+
+        lo to start times l2
+
+        lo to start times NAE
+
+        subr SatTransInc()
+
+        subr Evolution()
+
+        lo to start times NR
+
+        SETUP_GOTO(start)
+        ; don't use exit inside if/else blocks, instead QUIT
+        ; and EXIT at end of pulse program
+        QUIT
+}
+
+EXIT
+;============================================================
+;phase lists
+;============================================================
+
+ph0 = 0 2
+ph1 = 1
