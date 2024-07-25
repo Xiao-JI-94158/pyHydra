@@ -1,0 +1,170 @@
+;****************************************************************
+;
+; Copyright (c) 2021
+; Bruker BioSpin MRI GmbH
+; D-76275 Ettlingen, Germany
+;
+; All Rights Reserved
+;
+; UTE - A Radial Imaging Pulse Program
+;
+;****************************************************************
+
+
+#include <MRI.include>
+#include <Trajectory.mod>
+
+;============================================================
+
+if (PVM_TrajAdjustmentRunning == Yes)
+{ 
+  subr trajPerform()
+}
+else
+{
+;===========================================================
+;   definition of delays
+;===========================================================
+
+define delay d1m
+"d1m = d1 - 10u"
+
+define delay d12m
+"d12m = d12 - de"
+
+define delay spoilt
+"spoilt = 2*d1 + d16"
+
+
+;===========================================================
+;   declaration of 2d loop
+;===========================================================
+define list<grad_scalar> ProjR={$GradAmpR}
+define list<grad_scalar> ProjP={$GradAmpP}
+define list<grad_shape> Shape1={$GradShape1}
+define list<grad_shape> Shape2={$GradShape2}
+define list<grad_scalar> Proj2D={$Proj2DOffsetHzFac}  
+
+grad_zero_for_gs <ProjR,ProjP,Proj2D>
+
+ProjR.res
+ProjP.res
+Proj2D.res
+
+define loopcounter projs = {$NPro}
+
+define list<frequency> freqTx = {$ACQ_O1_list}
+define list<frequency> freqRx = {$ACQ_O1B_list}
+define list<phase> phaselist = {$PhaseList}
+
+#include <PrepModulesHead.mod> 
+
+INIT_DEVICES
+
+
+subr SatTransInit()
+start, 	0u
+subr TriggerPhase()
+slice,  UPDATE_DYN_PARS_30u               
+subr TriggerSlice()
+if (GradSync == Yes)
+{
+	1u	GRAD_SYNC
+}          
+;--------------------------- preparation modules ------------------
+subr FovSat()
+subr SatTrans()
+subr FatSup()
+;--------------------------- slice spoiler-------------------------
+        d6                grad_ramp{0, 0, g5*plusminus}
+        d1                grad_off
+;--------------------------- slice selection ----------------------
+if(AcqMode == FID)
+{
+        10u               gc_control
+        {
+         d11     grad_shape{0, 0, Shape1()*plusminus}
+         d5
+if(ACQ_scan_type != Setup_Experiment)
+{
+         d15	 grad_shape<xyzb0>{ReadGrad*Shape2()*ProjR, PhaseGrad*Shape2()*ProjP,0,Shape2()*Proj2D}		      
+}
+if(ACQ_scan_type == Setup_Experiment)
+{ 
+	 d15
+}
+         d1      grad_off<xyzb0> 
+        }
+ 	d1m		  freqTx:f1            	 
+        (p0:sp0 ph1):f1
+        d12m
+        d5                ;echo delay
+;--------------------------- fid acquisition ----------------------
+                          ADC_INIT_(job0, ph1, ph0)
+        d7                ADC_START_(job0)            
+        AQ_(job0)
+        spoilt             
+}
+else
+{
+;--------------------------- slice selection ----------------------
+        10u               gc_control
+        {
+         d11		  grad_shape{0, 0, Shape1()*plusminus}
+        }
+ 	d1m		  freqTx:f1             	 
+        (p0:sp0 ph1):f1
+        d12m              freqRx(receive):f1
+        d5                ;echo delay
+;--------------------------- echo acquisition ---------------------
+        ADC_INIT_(job0, ph1, phaselist) 
+        d15  ADC_START_(job0)   grad_shape{ReadGrad*Shape2()*ProjR, PhaseGrad*Shape2()*ProjP,0}           
+        d1                grad_off
+}
+        d0                ADC_END_(job0)
+;--------------------------- slice and movie loop -----------------
+        0u grad_matrix.inc
+        0u freqTx.inc
+lo to slice times NI
+;--------------------------- slice alternation --------------------
+if(SliceAlter == Yes)
+{
+	0u					plusminus.inc  
+	lo to slice times NECHOES
+}
+;--------------------------- dummy loop ---------------------------
+                "l11=l11-1"
+   if "l11>=0" goto slice
+
+;--------------------------- averaging loop -----------------------
+	0u ipp1                  
+lo to start times NA
+;--------------------------- projection loop ----------------------
+	0u                rpp1                  ProjR.inc
+        0u					ProjP.inc
+        0u	                                freqRx.inc
+        0u                                      phaselist.inc
+        0u                                      Proj2D.inc
+lo to start times projs
+
+	0u                                      ProjR.res
+	0u                                      ProjP.res
+        0u	                                freqRx.res
+        0u                                      phaselist.res
+        0u                                      Proj2D.res
+lo to start times NAE
+subr SatTransInc()
+lo to start times NR
+SETUP_GOTO(start) 
+; don't use exit inside if/else blocks, instead QUIT
+; and EXIT at end of pulse program
+QUIT
+}
+
+EXIT
+;============================================================
+;phase lists
+
+ph0 = 0
+ph1 = 0 2 1 3
+;============================================================

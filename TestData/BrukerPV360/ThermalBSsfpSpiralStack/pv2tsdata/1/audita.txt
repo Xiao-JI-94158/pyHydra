@@ -1,0 +1,12 @@
+##TITLE= Audit trail, TopSpin 4.3.0
+##JCAMPDX= 5.01
+##ORIGIN= Bruker BioSpin GmbH
+##OWNER= pciuser
+$$ /opt/nmrdata/PV-360.3.5/data/pciuser/20240718_213851_Urea_20240718_hpSsfpSpiral_SeqTest_1_1_33/7/pv2tsdata/1/audita.txt
+##AUDIT TRAIL=  $$ (NUMBER, WHEN, WHO, WHERE, PROCESS, VERSION, WHAT)
+(   1,<2024-07-18T22:13:50.404-0700>,<pciuser>,<CZC1517BBD>,<parx>,<TopSpin 4.3.0>,
+      <Created by ParaVision>)
+##END=
+
+$$ hash MD5
+$$ 36 ED A0 76 70 DD C1 1F 28 9D B7 E9 2A 9B 3B AF

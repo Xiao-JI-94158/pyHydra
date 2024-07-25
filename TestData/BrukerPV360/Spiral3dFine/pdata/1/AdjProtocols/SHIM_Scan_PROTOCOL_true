@@ -1,0 +1,71 @@
+##TITLE=Parameter List, ParaVision 360 V3.5
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=pciuser
+$$ Write Options: Symbolic Enums, RLE encoded arrays
+$$ 2024-07-24 19:42:34.188 -0700  pciuser@czc1517bbd
+$$ /opt/nmrdata/PV-360.3.5/data/pciuser/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/9/pdata/1/AdjProtocols/SHIM_Scan_PROTOCOL_true
+$$ process /opt/PV-360.3.5/prog/bin/parxserver
+##$Method=<Bruker:AdjShim>
+##$PVM_GeoObj=( 1, 65 )
+<PVM_MapShimVolDescr>
+##$PVM_StudyInstrumentPosition=Head_Supine
+##$PVM_ExportHandler=( 4 )
+(<BRUKER_PARIMPORT_SLICEGEO>, <>, <Slice Geometry>) 
+(<BRUKER_PARIMPORT_SLICEORIENT>, <>, <Slice Orientation>) 
+(<BRUKER_PARIMPORT_FOVSAT>, <>, <FOV Saturation>) (<BRUKER_PARIMPORT_MAPSHIM>,
+ <>, <Shim Volume>)
+##$PVM_TuneShimSubset=Shim_1st_order
+##$PVM_TuneShimForceSubset=Yes
+##$PVM_TuneShimNShimRep=3
+##$PVM_TuneShimRep=3
+##$PVM_TuneShimIncIter=Yes
+##$PVM_TuneShimActStw=Yes
+##$PVM_TuneShimStepWidth=( 3 )
+100 50 25
+##$PVM_TuneShimSet=( 3 )
+(Shim_X, 100, 2, 3, 0, 0) (Shim_Y, 100, 2, 3, 0, 0) (Shim_Z, 100, 2, 3, 0, 0)
+##$PVM_TuneShimAdjFreq=Yes
+##$PVM_TuneShimFreqOffs=( 1 )
+11.7451603163827
+##$PVM_TuneShimSkipShimming=Yes
+##$VoxPul1Enum=<gauss>
+##$VoxPul1=(0.274, 10000, 90, No, 3, 2740, 0.4181723, 0.298723764675971, 0, 50,
+ 28.5586555196552, <gauss.exc>)
+##$VoxPul1Ampl=(28.5586555196552, 37.7879977768439, -14.557377579312)
+##$StUte=No
+##$StGscheme=1
+##$StGStabD=0
+##$StSpTE1=(2, 9.59302975676482, 9.59302975676482, 9.59302975676482, 5, 5, 5)
+##$StSpTE2=(2, 9.75189006278143, 9.75270629624129, 9.4328681110613, 
+5.08279986096394, 5.08322529144866, 4.91652186547708)
+##$StSpTM=(9.726, 11.1100390581793, 11.1100390581793, 11.1100390581793, 30, 30,
+ 30)
+##$StDur=268.309
+##$PVM_SpecDimEnum=<1D>
+##$PVM_SpecDim=1
+##$PVM_SpecAcquisitionTime=250
+##$PVM_SpecOffsetHz=0
+##$PVM_SpecOffsetppm=0
+##$PVM_SpecMatrix=( 1 )
+12500
+##$PVM_SpecSWH=( 1 )
+50000
+##$PVM_SpecSW=( 1 )
+124.896960007993
+##$PVM_SpecDwellTime=( 1 )
+10
+##$PVM_SpecNomRes=( 1 )
+2
+##$PVM_EchoTime=8
+##$PVM_RepetitionTime=300
+##$ExcPulse1Enum=<bp>
+##$ExcPulse1=(0.05, 25600, 90, No, 3, 1280, 1, 1, 0, 50, 0.01, <bp.exc>)
+##$ExcPulse1Ampl=(0.01, 0.707106781186548, 20)
+##$PVM_TriggerMode=per_PhaseStep
+##$PVM_TriggerDelay=1
+##$PVM_TriggerDur=0.01
+##$PVM_TriggerModuleTime=0
+##END=
+$$ File finished by PARX at 2024-07-24 19:42:34.189 -0700
