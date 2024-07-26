@@ -4,17 +4,17 @@
 ##ORIGIN=Bruker BioSpin MRI GmbH
 ##OWNER=pciuser
 $$ Write Options: Symbolic Enums, RLE encoded arrays, symbol visibility
-$$ 2024-07-24 20:15:55.263 -0700  pciuser@czc1517bbd
-$$ /opt/nmrdata/PV-360.3.5/data/pciuser/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/pdata/1/visu_pars
+$$ 2024-07-25 18:42:51.060 -0700  pciuser@czc1517bbd
+$$ /opt/nmrdata/PV-360.3.5/data/pciuser/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/pdata/1/visu_pars
 $$ process /opt/PV-360.3.5/prog/bin/parxserver
 ##$VisuVersion=8
 ##$VisuUid=( 65 )
-<2.16.756.5.5.200.604667140.69010.1721877340.776>
+<2.16.756.5.5.200.604667140.36596.1721958116.163>
 ##$VisuCreator=( 65 )
 <ParaVision>
 ##$VisuCreatorVersion=( 195 )
 <360.3.5>
-##$VisuCreationDate=<2024-07-24T20:15:54,961-0700>
+##$VisuCreationDate=<2024-07-25T18:42:50,695-0700>
 ##$VisuInstanceType=STANDARD_INSTANCE
 ##$VisuInstanceModality=( 65 )
 <MR>
@@ -22,11 +22,11 @@ $$ process /opt/PV-360.3.5/prog/bin/parxserver
 ##$VisuCoreFrameCount=1
 ##$VisuCoreDim=2
 ##$VisuCoreSize=( 2 )
-64 64
+40 40
 ##$VisuCoreDimDesc=( 2 )
 spatial spatial
 ##$VisuCoreExtent=( 2 )
-32 32
+40 40
 ##$VisuCoreFrameThickness=( 1 )
 1
 ##$VisuCoreUnits=( 2, 65 )
@@ -34,7 +34,7 @@ spatial spatial
 ##$VisuCoreOrientation=( 1, 9 )
 1 0 0 0 1 0 0 0 1
 ##$VisuCorePosition=( 1, 3 )
--16 -9.5 0
+-20 -20 0
 ##$VisuCoreModalityOffset=( 1, 3 )
 0 0 0
 ##$VisuCoreAtsCenterDistance=0
@@ -45,7 +45,7 @@ spatial spatial
 ##$VisuCoreDataOffs=( 1 )
 0
 ##$VisuCoreDataSlope=( 1 )
-2162.52901172304
+5100.02767961709
 ##$VisuCoreFrameType=( 1 )
 MAGNITUDE_IMAGE
 ##$VisuCoreSlicePacksDef=(-1, 1)
@@ -67,25 +67,25 @@ MAGNITUDE_IMAGE
 ##$VisuSubjectSex=UNDEFINED
 ##$VisuSubjectType=Other
 ##$VisuStudyUid=( 65 )
-<2.16.756.5.5.200.604667140.69010.1721873693.8>
-##$VisuStudyDate=<2024-07-24T19:14:53,188-0700>
+<2.16.756.5.5.200.604667140.36596.1721957840.7>
+##$VisuStudyDate=<2024-07-25T18:37:20,964-0700>
 ##$VisuStudyId=( 65 )
-<20240724-NuFFTReconTest-1>
-##$VisuStudyNumber=37
+<20240725-NuFFTReconTest-1>
+##$VisuStudyNumber=38
 ##$VisuSubjectWeight=0.001
 ##$VisuStudyReferringPhysician=( 65 )
 <pciuser>
-##$VisuExperimentNumber=17
+##$VisuExperimentNumber=2
 ##$VisuProcessingNumber=1
-##$VisuSeriesDate=<2024-07-24T20:15:54,961-0700>
+##$VisuSeriesDate=<2024-07-25T18:42:50,695-0700>
 ##$VisuSubjectPosition=Head_Supine
 ##$VisuSeriesTypeId=( 65 )
 <ACQ_BRUKER_PVM>
 ##$VisuSeriesCreationId=VCMN_ACQUISITION
 ##$VisuSeriesExperimentComment=( 65 )
-<UTE>
+<UTE2d>
 ##$VisuSeriesFrameOfReferenceUid=( 65 )
-<2.16.756.5.5.200.604667140.69010.1721873693.8>
+<2.16.756.5.5.200.604667140.36596.1721957840.7>
 ##$VisuManufacturer=( 65 )
 <Bruker BioSpin MRI GmbH>
 ##$VisuAcqSoftwareVersion=( 65 )
@@ -96,19 +96,19 @@ MAGNITUDE_IMAGE
 <Remote Instrument>
 ##$VisuSystemOrderNumber=( 65 )
 <5040307>
-##$VisuAcqDate=<2024-07-24T20:15:51,187-0700>
+##$VisuAcqDate=<2024-07-25T18:42:45,781-0700>
 ##$VisuAcqSequenceName=( 40 )
 <Bruker:UTE>
 ##$VisuAcquisitionProtocol=( 65 )
 <UTE>
-##$VisuAcqScanTime=599.94
+##$VisuAcqScanTime=1014.3
 ##$VisuAcqFrameNumbers=( 1 )
 0
 ##$VisuCardiacSynchUsed=No
 ##$VisuRespSynchUsed=No
 ##$VisuAcqNumberOfAverages=1
 ##$VisuAcqRepetitionTime=( 1 )
-2.97
+8.05
 ##$VisuCoilReceiveName=( 65 )
 <RF RES 400 1H/13C 075/040 LIN/LIN TR>
 ##$VisuCoilReceiveManufacturer=( 65 )
@@ -122,14 +122,14 @@ MAGNITUDE_IMAGE
 ##$VisuCoilTransmitType=VOLUME_COIL
 ##$VisuCoilTransmitIsQuadrature=No
 ##$VisuAcqEchoTrainLength=1
-##$VisuAcqImagingFrequency=400.32992906738
+##$VisuAcqImagingFrequency=400.329846310674
 ##$VisuAcqImagedNucleus=( 8 )
 <1H>
-##$VisuAcqPixelBandwidth=1562.5
+##$VisuAcqPixelBandwidth=250
 ##$VisuAcqFlipAngle=15
 ##$VisuMrAcqFlipAngleVariable=No
 ##$VisuAcqSize=( 2 )
-64 64
+40 40
 ##$VisuAcqImageSizeAccellerated=No
 ##$VisuAcqGradEncoding=( 2 )
 read_enc phase_enc
@@ -156,7 +156,7 @@ DICOM_NONE DICOM_NONE
 1 1
 ##$VisuAcqMagnetizationTransfer=No
 ##$VisuAcqBloodSignalNulling=No
-##$VisuMagneticFieldStrength=9.40271347865887
+##$VisuMagneticFieldStrength=9.40271153491812
 ##$VisuMrMultiSpinEcho=No
 ##$VisuMrMultiPlanar=No
 ##$VisuMrSteadyStatePulse=MR_ST_TRANSVERSE
@@ -203,4 +203,4 @@ $$ @vis= VisuMagneticFieldStrength VisuMrMultiSpinEcho VisuMrMultiPlanar
 $$ @vis= VisuMrSteadyStatePulse VisuMrCoverageOfKSpace VisuMrPercentSampling
 $$ @vis= VisuMrs
 ##END=
-$$ File finished by PARX at 2024-07-24 20:15:55.264 -0700
+$$ File finished by PARX at 2024-07-25 18:42:51.061 -0700

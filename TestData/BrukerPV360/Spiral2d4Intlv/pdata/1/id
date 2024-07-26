@@ -1,0 +1,15 @@
+##TITLE=Parameter List, ParaVision 360 V3.5
+##JCAMPDX=4.24
+##DATATYPE=Parameter Values
+##ORIGIN=Bruker BioSpin MRI GmbH
+##OWNER=pciuser
+$$ Write Options: Symbolic Enums
+$$ 2024-07-25 18:59:33.909 -0700  pciuser@czc1517bbd
+$$ /opt/nmrdata/PV-360.3.5/data/pciuser/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/7/pdata/1/id
+$$ process /opt/PV-360.3.5/prog/bin/parxserver
+##$DATASET_KEY=( 65 )
+<2.16.756.5.5.200.604667140.36596.1721959173.337>
+##$DATASET_Modality=MR_Modality
+##$DATASET_ExperimentValid=Yes
+##END=
+$$ File finished by PARX at 2024-07-25 18:59:33.909 -0700

@@ -4,8 +4,8 @@
 ##ORIGIN=Bruker BioSpin MRI GmbH
 ##OWNER=pciuser
 $$ Write Options: Symbolic Enums, RLE encoded arrays, symbol visibility
-$$ 2024-07-24 20:15:49.194 -0700  pciuser@czc1517bbd
-$$ /opt/nmrdata/PV-360.3.5/data/pciuser/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/configscan
+$$ 2024-07-25 18:42:44.124 -0700  pciuser@czc1517bbd
+$$ /opt/nmrdata/PV-360.3.5/data/pciuser/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/configscan
 $$ process /opt/PV-360.3.5/prog/bin/parxserver
 ##$CONFIG_SCAN_version=1
 ##$AdjConfigurationMode=( <MRI_Default> , <MRI Default> )
@@ -26,7 +26,7 @@ study_result, Yes, Yes, <>, HANDLE_ACQUISITION, Yes) (<SHIM_Scan>, <Scan Shim>
 <>, <>, study_result, Yes, Yes, <>, HANDLE_ACQUISITION, Yes) (<Trajectory>, 
 <Trajectory Measurement>, <Measurement of the k-space trajectory>, <#METHOD#>,
  <>, 
-<5.00e-015.00e-010.00e+000202112215803.12e+053.12e+050.00e+002.00e-031.0000e-02-1.00e+000.00e+000.00e+000.00e+001.00e+000.00e+000.00e+000.00e+00-1.00e+00>, scan_result, No, Yes, <>, HANDLE_ACQUISITION, Yes)
+<1.00e+001.00e+000.00e+000126112214102.50e+042.50e+040.00e+002.00e-031.0000e-01-1.00e+000.00e+000.00e+000.00e+001.00e+000.00e+000.00e+000.00e+00-1.00e+00>, scan_result, No, Yes, <>, HANDLE_ACQUISITION, Yes)
 ##$CONFIG_SCAN_operation_mode=( <$Bis,1,20240328,2048,ROUTING,2#$Name,[1H] 
 TX/RX Volume#$OpMode,1.0,D/A,
 2.16.756.5.5.200.604667140.2087.1711670849.10#$TxCoil,1.0,1,RF RES 400 1H/13C 
@@ -107,4 +107,4 @@ $$ @vis= CONFIG_SCAN_RxCoilsNames CONFIG_SCAN_TxCoilsNames
 $$ @vis= SHIM_status_check_sum_components SHIM_status_check_sum
 $$ @vis= SHIM_status_deprecated_sums
 ##END=
-$$ File finished by PARX at 2024-07-24 20:15:49.194 -0700
+$$ File finished by PARX at 2024-07-25 18:42:44.125 -0700

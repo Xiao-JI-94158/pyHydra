@@ -1,7 +1,7 @@
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 ;****************************************************************
 ;
 ; Copyright (c) 2021
@@ -15,7 +15,7 @@
 ;****************************************************************
 
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include" 1
 ;****************************************************************
 ;
 ; Copyright (c) 2018-2021
@@ -27,7 +27,7 @@
 ;****************************************************************
 
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Avance.incl" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Avance.incl" 1
 ;Avance4.incl
 ;   for AV 4
 ;
@@ -37,39 +37,39 @@
 ;$COMMENT=
 
 
-# 19 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Avance.incl"
+# 19 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Avance.incl"
 ;setrtp0 denotes TimingController
 
 
-# 50 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Avance.incl"
-# 51 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Avance.incl"
+# 50 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Avance.incl"
+# 51 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Avance.incl"
 
 
-# 63 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Avance.incl"
-# 89 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Avance.incl"
-# 90 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Avance.incl"
+# 63 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Avance.incl"
+# 89 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Avance.incl"
+# 90 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Avance.incl"
 
 
-# 123 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Avance.incl"
+# 123 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Avance.incl"
 ;#define LOWQ
 ;#define HIGHQ
 
 
 ;#define MIX_UP
 ;#define MIX_DOWN
-# 136 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Avance.incl"
+# 136 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Avance.incl"
 ;$Id:$
-# 15 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include" 2
+# 15 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include" 2
 
 
 define delay adcEndInfoTagDel
 define delay rde1
-# 20 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 20 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
 "rde1=de-de1"
 
 
 ; Remark:  is the string concatenation mode for cpp with traditional option
-# 27 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 27 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
 	
 
 
@@ -80,9 +80,9 @@ subroutine InitDevices
 subroutine UpdateDynPars_30s
 subroutine SetupGoTo
 subroutine AdcEnd_InfoTag
-# 15 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg" 2
+# 15 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg" 2
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod" 1
 ;****************************************************************
 ;
 ; Copyright (c) 2021
@@ -98,15 +98,15 @@ subroutine AdcEnd_InfoTag
 ;*******************************************************************************
 ;	gradient shapes for gradientMode = 1,2 (shape)
 ;*******************************************************************************
-# 28 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
-# 29 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 28 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
+# 29 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
 
-# 42 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 42 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
   
-# 55 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 55 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
 
-# 68 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
-# 72 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 68 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
+# 72 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
 ;*******************************************************************************
 ;	internal subroutines
 ;*******************************************************************************
@@ -117,7 +117,7 @@ subroutine trajTestOn
 
 subroutine trajTestOff
 subroutine trajIncr
-# 88 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 88 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
 define list<grad_scalar> PVM_TrajInt1r
 define list<grad_scalar> PVM_TrajInt2r
 define list<grad_scalar> PVM_TrajInt3r
@@ -138,14 +138,14 @@ define list<grad_scalar> PVM_TrajSliceOffsetHzFac
 subroutine trajIncrement
 
 
-# 125 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 125 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
 ;*******************************************************************************
 ;	external subroutine
 ;*******************************************************************************
 
 subroutine trajPerform
 
-# 16 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg" 2
+# 16 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg" 2
 
 ;============================================================
 
@@ -153,7 +153,7 @@ if (PVM_TrajAdjustmentRunning == Yes)
 { 
   subr trajPerform
 ;EXEC_begin trajPerform trajPerform()
-# 130 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 130 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
  
 ;===============================================================================
 ;	set parameters
@@ -202,11 +202,11 @@ if (PVM_TrajAdjustmentRunning == Yes)
 
   
 ;EXEC_begin InitDevices InitDevices()
-# 75 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 75 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
  
     
 ;EXEC_begin InitGradients InitGradients()
-# 60 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 60 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
  
     define list <grad_index> xyzb0 = {0 1 2 3}
     1m sync_grad 100
@@ -214,18 +214,18 @@ if (PVM_TrajAdjustmentRunning == Yes)
     1m shim_off  
  
 ;EXEC_end   InitGradients
-# 77 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 77 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
     
 ;EXEC_begin InitDevices_NoGradients InitDevices_NoGradients()
-# 69 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 69 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
  
     2u h2pulse       ;SEL_2H plus interleave_incr
  
 ;EXEC_end   InitDevices_NoGradients
-# 78 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 78 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
  
 ;EXEC_end   InitDevices
-# 177 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 177 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
 
   start0,
     trajRep                 trajList:f1
@@ -284,20 +284,20 @@ if (PVM_TrajAdjustmentRunning == Yes)
       if "l0 == 0" goto test_off1
       
 ;EXEC_begin trajTestOn trajTestOn(phase ph0, phase ph0)
-# 79 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 79 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
  
  
 ;EXEC_end   trajTestOn
-# 234 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 234 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
       goto test_end2
     test_off1,
       
 ;EXEC_begin trajTestOff trajTestOff(phase ph0, phase ph0)
-# 82 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 82 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
  
  
 ;EXEC_end   trajTestOff
-# 237 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 237 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
     test_end2,
     }
     else
@@ -343,17 +343,17 @@ if (PVM_TrajAdjustmentRunning == Yes)
     {
       
 ;EXEC_begin trajIncrement trajIncrement()
-# 106 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 106 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
  
   if (PVM_TrajGradMode == 0)
   {
     
 ;EXEC_begin trajIncr trajIncr()
-# 85 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 85 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
  
  
 ;EXEC_end   trajIncr
-# 110 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 110 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
   }
   else
   {
@@ -369,7 +369,7 @@ if (PVM_TrajAdjustmentRunning == Yes)
   }
  
 ;EXEC_end   trajIncrement
-# 281 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 281 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
       lo to start0 times trajInts
     }
 ;----------------------------------loop axes------------------------------------
@@ -393,7 +393,7 @@ if (PVM_TrajAdjustmentRunning == Yes)
 
   
 ;EXEC_begin SetupGoTo SetupGoTo(any start)
-# 90 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 90 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
  
     if (ACQ_scan_type != Scan_Experiment)
     {
@@ -401,20 +401,20 @@ if (PVM_TrajAdjustmentRunning == Yes)
     }
  
 ;EXEC_end   SetupGoTo
-# 303 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trajectory.mod"
+# 303 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trajectory.mod"
   ; do not use exit in modules
   ; instead use goto EXIT_LABEL in combination with EXIT_LABEL, exit in main pulse program
   goto EXIT_LABEL
  
 ;EXEC_end   trajPerform
-# 22 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 22 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 }
 else
 {
 ;===========================================================
 ;   definition of delays
 ;===========================================================
-# 29 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 29 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 define delay d1m
 "d1m = d1 - 10u"
 
@@ -423,7 +423,7 @@ define delay d12m
 
 define delay spoilt
 "spoilt = 2*d1 + d16"
-# 39 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 39 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 ;===========================================================
 ;   declaration of 2d loop
 ;===========================================================
@@ -438,14 +438,14 @@ grad_zero_for_gs <ProjR,ProjP,Proj2D>
 ProjR.res
 ProjP.res
 Proj2D.res
-# 54 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 54 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 define loopcounter projs = {$NPro}
 
 define list<frequency> freqTx = {$ACQ_O1_list}
 define list<frequency> freqRx = {$ACQ_O1B_list}
 define list<phase> phaselist = {$PhaseList}
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 1
 ;****************************************************************
 ;
 ; Copyright (c) 2003-2007
@@ -465,7 +465,7 @@ define list<phase> phaselist = {$PhaseList}
 
 ;**** Fat Suppression ****
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/FatSup.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/FatSup.mod" 1
 ;****************************************************************
 ;
 ; Copyright (c) 2018
@@ -495,11 +495,11 @@ if (PVM_FatSupPerform == Yes)
   "fatSupSpoil = fatSupSpoil / 1000"
 }
 subroutine FatSup
-# 21 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 2
+# 21 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 2
 
 ;**** Flow Saturation ****
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/FlowSat.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/FlowSat.mod" 1
 ;****************************************************************
 ;
 ; Copyright (c) 2018
@@ -525,7 +525,7 @@ define list<grad_scalar> flowSatGrad={$PVM_InFlowSatGrad}
 
 define delay SfD0 = {$PVM_SfD0}
 define delay SfD2 = {$PVM_SfD2}
-# 27 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/FlowSat.mod"
+# 27 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/FlowSat.mod"
 define pulse SfP0 = {$PVM_SfP0}
 define loopcounter SfLp0 = {$PVM_SfLp0}
 }
@@ -534,11 +534,11 @@ define loopcounter SfLp0 = {$PVM_SfLp0}
 subroutine FlowSat
 subroutine FlowSatInc
 subroutine FlowSatInit
-# 25 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 2
+# 25 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 2
 
 ;**** Saturation Transfer ****
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/SatTrans.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/SatTrans.mod" 1
 ;****************************************************************
 ; $Source$
 ;
@@ -568,7 +568,7 @@ subroutine FlowSatInit
 ;                        counter with repetitions and resetting it to zero
 ;                        when StReps is reached, this happens for cntr vals
 ;                        0 & 1.
-# 32 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/SatTrans.mod"
+# 32 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/SatTrans.mod"
 if(PVM_SatTransOnOff)
 {
   define list<frequency> modlis5    = {$PVM_SatTransFL}
@@ -583,7 +583,7 @@ if(PVM_SatTransOnOff)
 
   define loopcounter StNPulses      = {$PVM_SatTransNPulses}
   define loopcounter StReps         = {$PVM_SatTransRepetitions}
-# 47 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/SatTrans.mod"
+# 47 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/SatTrans.mod"
   define loopcounter StRepCntr
   "StRepCntr = 0"
 }
@@ -592,11 +592,11 @@ subroutine SatTransInit
 
 subroutine SatTransInc
 subroutine SatTrans
-# 29 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 2
+# 29 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 2
 
 ;*** FOV Saturation ***
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/FovSat.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/FovSat.mod" 1
 ;****************************************************************
 ;
 ; Copyright (c) 2018
@@ -621,7 +621,7 @@ if (PVM_FovSatOnOff == On)
   define delay fovSatRamp  = {$PVM_FovSatRampTime}
   define delay fovSatWait  = {$PVM_FovSatGradWait}
   define delay fovSatSpoil = {$PVM_FovSatSpoilDur}
-# 26 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/FovSat.mod"
+# 26 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/FovSat.mod"
   ; convert from ms to s
   "fovSatRamp  = fovSatRamp  / 1000"
   "fovSatWait  = fovSatWait  / 1000"
@@ -630,11 +630,11 @@ if (PVM_FovSatOnOff == On)
 
 subroutine FovSat
 
-# 33 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 2
+# 33 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 2
 
 ;**** Black Blood ****
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/BlBlood.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/BlBlood.mod" 1
 ;****************************************************************
 ;
 ; Copyright (c) 2018
@@ -663,11 +663,11 @@ define delay BlbD2 = {$PVM_BlbD2}
 define pulse BlbP0 = {$PVM_BlbP0}
 }
 subroutine BlBlood
-# 37 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 2
+# 37 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 2
 
 ;**** Trigger ****
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trigger.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trigger.mod" 1
 ;****************************************************************
 ;
 ; Copyright (c) 2018
@@ -692,11 +692,11 @@ if (PVM_TriggerModule == On)
 subroutine Trigger
 subroutine TriggerPhase
 subroutine TriggerSlice
-# 41 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 2
+# 41 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 2
 
 ;**** Trigger Out ****
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/TriggerOut.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/TriggerOut.mod" 1
 ;****************************************************************
 ;
 ; Copyright (c) 2018
@@ -720,11 +720,11 @@ subroutine TriggerOut
 subroutine TriggerOutStart
 subroutine TriggerOutSlice
 subroutine TriggerOutVolume
-# 45 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 2
+# 45 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 2
 
 ;**** Outer Volume Suppression ****
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/WsOvs.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/WsOvs.mod" 1
 ;****************************************************************
 ;
 ; Copyright (c) 2018
@@ -755,7 +755,7 @@ define delay OvsD1 = {$PVM_OvsD1}
 define pulse OvsP0 = {$PVM_OvsP0}
 }
 subroutine Ovs
-# 62 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/WsOvs.mod"
+# 62 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/WsOvs.mod"
 ;*** WaterSuppression Module with OVS ****
 
 if (PVM_WsMode)
@@ -775,18 +775,18 @@ define list<delay> ChD1={$PVM_ChppgD1}
 define list<delay> ChD2={$PVM_ChppgD2}
 define list<delay> VpD1={$PVM_VpppgD1}
 define list<delay> VpD2={$PVM_VpppgD2}
-# 82 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/WsOvs.mod"
+# 82 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/WsOvs.mod"
 }
 
 
 subroutine WsOvsMain
 subroutine WsOvs
 subroutine Ws
-# 49 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 2
+# 49 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 2
 
 ;**** Solvent Suppression module ****
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/WsSat.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/WsSat.mod" 1
 ;******************************************************************
 ;
 ; Copyright (c) 2018
@@ -809,11 +809,11 @@ subroutine Ws
 ; Definitions for WsPpgParams are included in WsOvs.mod
 subroutine WsSatMain
 subroutine WsSat
-# 53 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 2
+# 53 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 2
 
 ;**** Selective Inversion Recovery ****
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/SliceSelIr.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/SliceSelIr.mod" 1
 ;****************************************************************
 ;
 ; Copyright (c) 2018
@@ -839,7 +839,7 @@ if(PVM_SelIrOnOff)
   define delay IrD1 = {$PVM_SelIrD1} ; PVM_InterInvEndDelay[0]
   define delay IrD2 = {$PVM_SelIrD2} ; Spoiler duration
   define delay IrD4 = {$PVM_SelIrD4} ; risetime
-# 27 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/SliceSelIr.mod"
+# 27 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/SliceSelIr.mod"
   define pulse IrP0 = {$PVM_SelIrP0}
   define loopcounter IrL0 = {$PVM_SelIrL0}
   define loopcounter IrL1
@@ -847,11 +847,11 @@ if(PVM_SelIrOnOff)
 
 subroutine SliceSelIr
 
-# 57 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 2
+# 57 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 2
 
 ;**** Tagging ****
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Tagging.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Tagging.mod" 1
 ;****************************************************************
 ;
 ; Copyright (c) 2007
@@ -877,18 +877,18 @@ define delay TaggD1 = {$PVM_TaggingD1}
 define delay TaggD2 = {$PVM_TaggingD2}
 define delay TaggD3 = {$PVM_TaggingD3}
 define delay TaggD4 = {$PVM_TaggingD4}
-# 27 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Tagging.mod"
+# 27 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Tagging.mod"
 define pulse TaggP0 = {$PVM_TaggingP0}
 define loopcounter TaggL0 = {$PVM_TaggingLp0}
 }
 
 subroutine Tagging
 
-# 61 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 2
+# 61 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 2
 
 ;**** Noe ****
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Noe.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Noe.mod" 1
 ;****************************************************************
 ;
 ; Copyright (c) 2018
@@ -913,11 +913,11 @@ define delay NoeD1 = {$PVM_NoeD1}
 }
 
 subroutine Noe
-# 65 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 2
+# 65 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 2
 
 ;**** Evolution ****
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Evolution.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Evolution.mod" 1
 ;****************************************************************
 ;
 ; Copyright (c) 2018
@@ -937,11 +937,11 @@ if (PVM_EvolutionOnOff == On)
 }
 
 subroutine Evolution
-# 69 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 2
+# 69 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 2
 
 ;**** Drift Compensation ****
 
-# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/DriftComp.mod" 1
+# 1 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/DriftComp.mod" 1
 ;==========================================================
 ;   subroutine for drift compensation
 ;==========================================================
@@ -962,16 +962,16 @@ if (PVM_DriftCompNavOnOff == On)
   define list<phase> dcph = { 0 }
 }
 subroutine DriftComp
-# 73 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/PrepModulesHead.mod" 2
-# 61 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg" 2
+# 73 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/PrepModulesHead.mod" 2
+# 61 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg" 2
 
 subr InitDevices
 ;EXEC_begin InitDevices InitDevices()
-# 75 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 75 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
  
     
 ;EXEC_begin InitGradients InitGradients()
-# 60 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 60 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
  
     define list <grad_index> xyzb0 = {0 1 2 3}
     1m sync_grad 100
@@ -979,22 +979,22 @@ subr InitDevices
     1m shim_off  
  
 ;EXEC_end   InitGradients
-# 77 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 77 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
     
 ;EXEC_begin InitDevices_NoGradients InitDevices_NoGradients()
-# 69 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 69 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
  
     2u h2pulse       ;SEL_2H plus interleave_incr
  
 ;EXEC_end   InitDevices_NoGradients
-# 78 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 78 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
  
 ;EXEC_end   InitDevices
-# 63 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 63 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 
 subr SatTransInit
 ;EXEC_begin SatTransInit SatTransInit()
-# 52 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/SatTrans.mod"
+# 52 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/SatTrans.mod"
  
   if(PVM_SatTransOnOff)
   {
@@ -1005,18 +1005,18 @@ subr SatTransInit
   }
  
 ;EXEC_end   SatTransInit
-# 66 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
-# 66 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 66 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
+# 66 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 start, 	0u
 subr TriggerPhase
 ;EXEC_begin TriggerPhase TriggerPhase()
-# 33 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trigger.mod"
+# 33 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trigger.mod"
  
   if (PVM_TriggerMode == per_PhaseStep)
   {
     
 ;EXEC_begin Trigger Trigger()
-# 24 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trigger.mod"
+# 24 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trigger.mod"
  
   if (PVM_TriggerModule == On)
   {
@@ -1025,30 +1025,30 @@ subr TriggerPhase
   }
  
 ;EXEC_end   Trigger
-# 37 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trigger.mod"
+# 37 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trigger.mod"
   }
  
 ;EXEC_end   TriggerPhase
-# 68 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 68 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 slice,  subr UpdateDynPars_30s
 ;EXEC_begin UpdateDynPars_30s UpdateDynPars_30s()
-# 82 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 82 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
  
     29.8u switch_realtime_tables
      0.1u update_interactive_parameters
      0.1u blockrequest
  
 ;EXEC_end   UpdateDynPars_30s
-# 69 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 69 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 subr TriggerSlice
 ;EXEC_begin TriggerSlice TriggerSlice()
-# 41 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trigger.mod"
+# 41 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trigger.mod"
  
   if (PVM_TriggerMode == per_Slice)
   {
     
 ;EXEC_begin Trigger Trigger()
-# 24 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trigger.mod"
+# 24 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trigger.mod"
  
   if (PVM_TriggerModule == On)
   {
@@ -1057,11 +1057,11 @@ subr TriggerSlice
   }
  
 ;EXEC_end   Trigger
-# 45 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/Trigger.mod"
+# 45 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/Trigger.mod"
   }
  
 ;EXEC_end   TriggerSlice
-# 70 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 70 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 if (GradSync == Yes)
 {
 	1u	trigpe3
@@ -1069,7 +1069,7 @@ if (GradSync == Yes)
 ;--------------------------- preparation modules ------------------
 subr FovSat
 ;EXEC_begin FovSat FovSat()
-# 33 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/FovSat.mod"
+# 33 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/FovSat.mod"
  
   if (PVM_FovSatOnOff == On)
   {
@@ -1088,10 +1088,10 @@ subr FovSat
   }
  
 ;EXEC_end   FovSat
-# 76 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 76 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 subr SatTrans
 ;EXEC_begin SatTrans SatTrans()
-# 91 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/SatTrans.mod"
+# 91 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/SatTrans.mod"
  
 
   if(PVM_SatTransOnOff)
@@ -1108,10 +1108,10 @@ subr SatTrans
 
  
 ;EXEC_end   SatTrans
-# 77 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 77 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 subr FatSup
 ;EXEC_begin FatSup FatSup()
-# 31 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/FatSup.mod"
+# 31 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/FatSup.mod"
  
   if (PVM_FatSupPerform == Yes)
   {
@@ -1123,7 +1123,7 @@ subr FatSup
   }
  
 ;EXEC_end   FatSup
-# 78 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 78 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 ;--------------------------- slice spoiler-------------------------
         d6                grad_ramp{0, 0, g5*plusminus}
         d1                grad_off
@@ -1204,7 +1204,7 @@ lo to start times projs
 lo to start times NAE
 subr SatTransInc
 ;EXEC_begin SatTransInc SatTransInc()
-# 64 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/SatTrans.mod"
+# 64 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/SatTrans.mod"
  
 
   if(PVM_SatTransOnOff)
@@ -1230,11 +1230,11 @@ subr SatTransInc
 
  
 ;EXEC_end   SatTransInc
-# 157 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 157 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 lo to start times NR
 subr SetupGoTo
 ;EXEC_begin SetupGoTo SetupGoTo(any start)
-# 90 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/MRI.include"
+# 90 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/MRI.include"
  
     if (ACQ_scan_type != Scan_Experiment)
     {
@@ -1242,12 +1242,12 @@ subr SetupGoTo
     }
  
 ;EXEC_end   SetupGoTo
-# 159 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 159 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 ; don't use exit inside if/else blocks, instead QUIT
 ; and EXIT_LABEL, exit at end of pulse program
 goto EXIT_LABEL
 }
-# 164 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/lists/pp/UTE.ppg"
+# 164 "/root/.topspin-BladeEpu/local_acqu/tuneDirs/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/lists/pp/UTE.ppg"
 EXIT_LABEL, exit
 ;============================================================
 ;phase lists

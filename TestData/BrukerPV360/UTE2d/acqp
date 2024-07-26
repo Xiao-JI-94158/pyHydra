@@ -4,17 +4,17 @@
 ##ORIGIN=Bruker BioSpin MRI GmbH
 ##OWNER=pciuser
 $$ Write Options: Symbolic Enums, RLE encoded arrays, symbol visibility
-$$ 2024-07-24 20:15:55.305 -0700  pciuser@czc1517bbd
-$$ /opt/nmrdata/PV-360.3.5/data/pciuser/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/acqp
+$$ 2024-07-25 18:42:51.110 -0700  pciuser@czc1517bbd
+$$ /opt/nmrdata/PV-360.3.5/data/pciuser/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/acqp
 $$ process /opt/PV-360.3.5/prog/bin/parxserver
 ##$ACQ_protocol_name=( 64 )
 <UTE>
 ##$ACQ_scan_name=( 64 )
-<UTE (E17)>
+<UTE2d (E2)>
 ##$ACQ_method=( 40 )
 <Bruker:UTE>
 ##$ACQ_patient_pos=Head_Supine
-##$ACQ_abs_time=(1721877351, 187, -420)
+##$ACQ_abs_time=(1721958165, 781, -420)
 ##$ACQ_operator=( 16 )
 <pciuser>
 ##$ACQ_institution=( 48 )
@@ -76,7 +76,7 @@ Spatial Spatial
 ##$ACQ_movie_descr=( 1, 20 )
 <>
 ##$ACQ_fov=( 2 )
-3.2 3.2
+4 4
 ##$ACQ_read_ext=1
 ##$ACQ_slice_angle=( 1 )
 0
@@ -84,7 +84,7 @@ Spatial Spatial
 ##$ACQ_read_offset=( 1 )
 0
 ##$ACQ_phase1_offset=( 1 )
--6.5
+0
 ##$ACQ_phase2_offset=( 1 )
 0
 ##$ACQ_slice_sepn=( 1 )
@@ -101,7 +101,7 @@ Spatial Spatial
 ##$ACQ_inter_echo_time=( 1 )
 0.497
 ##$ACQ_recov_time=( 1 )
-2.4065
+7.4865
 ##$ACQ_inversion_time=( 1 )
 0
 ##$ACQ_temporal_delay=( 1 )
@@ -147,11 +147,11 @@ Read User_Defined_Encoding
 0 0
 ##$ACQ_spatial_size_1=1
 ##$ACQ_gradient_amplitude=( 100 )
-17.7279189905014 11.0799493690634 11.0799493690634 -11.4687195223638 
--11.4687195223638 18.6609673584225 @94*(0)
+17.7279189905014 0.886395949525069 0.886395949525069 -4.18316684951305 
+-4.18316684951305 18.6609673584225 @94*(0)
 ##$ACQ_ScanPipeJobSettings=( 1 )
 (STORE_processed, STORE_32bit_signed, DISPLAY_each_accumulation, LOG_none, 
-ACCUM_average, 0, 0, 0, 0, 202, 202, NORMALIZE_none, PIPELINE_processed, 0, 
+ACCUM_average, 0, 0, 0, 0, 126, 126, NORMALIZE_none, PIPELINE_processed, 0, 
 STREAMING_none, DISPLAY_CoilsSideBySide)
 ##$ACQ_SetupPipeJobSettings=( 1 )
 (DISPLAY_each_accumulation, 1)
@@ -165,7 +165,7 @@ STREAMING_none, DISPLAY_CoilsSideBySide)
 ##$ACQ_ScanFtDisplay=No
 ##$ACQ_jobs_size=1
 ##$ACQ_repetition_time=( 1 )
-2.97
+8.05
 ##$ACQ_scan_type=Scan_Experiment
 ##$ACQ_DebugOptions=(20, 0, No)
 ##$ACQ_TriggerTimeout=(30, No, No)
@@ -180,12 +180,12 @@ STREAMING_none, DISPLAY_CoilsSideBySide)
 ##$ACQ_SetupType=Spectrometer_Parameters
 ##$ACQ_SetupFtDisplay=No
 ##$ACQ_RxFilterSettings=( 1 )
-(HwFilter_Bypass1, SwFilter_LowPassSmooth_Decim, 300, 8, 3, 120, 
+(HwFilter_BypassFir, SwFilter_LowPassSmooth_Decim, 1500, 16, 2, 240, 
 SwDataExt_Zero, 0)
 ##$ACQ_RxFilterInfo=( 1 )
-(0, 15.375, 11.75, 17.6144093452479, 31)
+(0, 15.125, 20.5, 19.2753733926916, 31)
 ##$ACQ_jobs=( 1 )
-(76, 1, 335, 202, 101, 100000, 202, 1, <job0>)
+(42, 1, 124, 126, 101, 10000, 126, 1, <job0>)
 ##$ACQ_preload=0
 ##$ACQ_branch_preload=( 10, 2 )
 @18*(1000000) 500 500
@@ -196,7 +196,7 @@ No Yes No No Yes No No No
 ##$ACQ_TxSguSelect=( 4 )
 Yes Yes No No
 ##$ACQ_RfShapes=( 64 )
-(<$ExcPulse1Shape>, 0.223977906361922, 0, 0.5, 0, @24*(100), @24*(0)) (<>, 0, 
+(<$ExcPulse1Shape>, 0.220773025640136, 0, 0.5, 0, @24*(100), @24*(0)) (<>, 0, 
 0, 0.5, 0, @24*(0), @24*(0)) (<>, 0, 0, 0.5, 0, @24*(0), @24*(0)) (<>, 0, 0, 
 0.5, 0, @24*(0), @24*(0)) (<>, 0, 0, 0.5, 0, @24*(0), @24*(0)) (<>, 0, 0, 0.5,
  0, @24*(0), @24*(0)) (<>, 0, 0, 0.5, 0, @24*(0), @24*(0)) (<>, 0, 0, 0.5, 0, 
@@ -216,8 +216,8 @@ Yes Yes No No
 @24*(0), @24*(0)) (<>, 0, 0, 0.5, 0, @24*(0), @24*(0)) (<>, 0, 0, 0.5, 0, 
 @24*(0), @24*(0)) (<>, 0, 0, 0.5, 0, @24*(0), @24*(0)) (<>, 0, 0, 0.5, 0, 
 @24*(0), @24*(0)) (<>, 0, 0, 0.5, 0, @24*(0), @24*(0)) (<>, 0, 0, 0.5, 0, 
-@24*(0), @24*(0)) (<$PVM_FatSupPulShape>, 0.762516807562322, 0, 0.5, 0, 
-@24*(100), @24*(0)) (<sech.exc>, 2.05656177153869, 0, 0.5, 0, @24*(100), 
+@24*(0), @24*(0)) (<$PVM_FatSupPulShape>, 0.751606019724857, 0, 0.5, 0, 
+@24*(100), @24*(0)) (<sech.exc>, 2.02713460489612, 0, 0.5, 0, @24*(100), 
 @24*(0)) (<>, 0, 0, 0.5, 0, @24*(0), @24*(0)) (<>, 0, 0, 0.5, 0, @24*(0), 
 @24*(0)) (<>, 0, 0, 0.5, 0, @24*(0), @24*(0)) (<>, 0, 0, 0.5, 0, @24*(0), 
 @24*(0)) (<>, 0, 0, 0.5, 0, @24*(0), @24*(0)) (<>, 0, 0, 0.5, 0, @24*(0), 
@@ -231,17 +231,17 @@ Yes Yes No No
 @24*(0)) (<>, 0, 0, 0.5, 0, @24*(0), @24*(0)) (<>, 0, 0, 0.5, 0, @24*(0), 
 @24*(0))
 ##$ACQ_WriteServerIOR=( 445 )
-<IOR:010000002600000049444c3a73632e6e6d722e6272756b65722e64652f6163712f41637157726974653a312e300000000100000000000000a0000000010102000c00000031302e33362e342e3132350080d800000e000000fe65c3a1660000d39f000000000300000400000000000000080000000100000000545441010000001c000000010000000100010501000000010001050901010001000000090101000300000018000000010000000d0000003134392e3233362e39392e3100004ba00300000014000000010000000a0000003132372e302e302e3100e786>
+<IOR:010000002600000049444c3a73632e6e6d722e6272756b65722e64652f6163712f41637157726974653a312e300000000100000000000000a0000000010102000c00000031302e33362e342e3132350052d600000e000000fe14ffa2660000cbf6000000000300000400000000000000080000000100000000545441010000001c000000010000000100010501000000010001050901010001000000090101000300000018000000010000000d0000003134392e3233362e39392e31000050c40300000014000000010000000a0000003132372e302e302e3100479c>
 ##$D=( 64 )
-1.00000000000004e-05 0.000152 0 0.00038 0 0 0.00038 0.00011 0 0 0 0.000965 
-0.000182 0 0 0.001282 0.00064 6e-05 @46*(0)
+1.00000000000018e-05 0.000152 0 0.00038 0 0 0.00038 0.00011 0 0 0 0.000965 
+0.000182 0 0 0.006362 0.004 0.0001 @46*(0)
 ##$P=( 64 )
 630 @63*(0)
 ##$PLW=( 64 )
 @64*(0)
 ##$PH_ref=0
-##$BF1=400.32992906738
-##$SFO1=400.32992906738
+##$BF1=400.329846310674
+##$SFO1=400.329846310674
 ##$O1=0
 ##$BF2=400.33
 ##$SFO2=400.33
@@ -281,14 +281,14 @@ Yes Yes No No
 ##$NUC8=( 8 )
 <off>
 ##$L=( 32 )
-@11*(0) 335 @20*(0)
+@11*(0) 124 @20*(0)
 ##$ACQ_DriftCompActive=No
 ##$ACQ_DriftCompJob=1
 ##$ACQ_DriftCompFilterWidth=1
 ##$ACQ_DriftCompStep=1
 ##$ACQ_DriftCompOffset=0
 ##$ACQ_DriftCompDebug=No
-##$GOSI_RepetitionTime=2.97
+##$GOSI_RepetitionTime=8.05
 ##$GOSI_ExperimentDurationFactor=0.1
 $$ @vis= ACQP ACQ_COMMON ACQ_protocol_name ACQ_scan_name ACQ_method
 $$ @vis= ACQ_patient_pos ACQ_abs_time ACQ_operator ACQ_institution ACQ_station
@@ -332,4 +332,4 @@ $$ @vis= Drift ACQ_DriftCompActive ACQ_DriftCompJob ACQ_DriftCompFilterWidth
 $$ @vis= ACQ_DriftCompStep ACQ_DriftCompOffset ACQ_DriftCompDebug GOSI
 $$ @vis= GOSI_RepetitionTime GOSI_ExperimentDurationFactor
 ##END=
-$$ File finished by PARX at 2024-07-24 20:15:55.307 -0700
+$$ File finished by PARX at 2024-07-25 18:42:51.112 -0700

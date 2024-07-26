@@ -4,17 +4,17 @@
 ##ORIGIN=Bruker BioSpin MRI GmbH
 ##OWNER=pciuser
 $$ Write Options: Symbolic Enums, RLE encoded arrays, symbol visibility
-$$ 2024-07-24 20:15:55.096 -0700  pciuser@czc1517bbd
-$$ /opt/nmrdata/PV-360.3.5/data/pciuser/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/pdata/1/reco
+$$ 2024-07-25 18:42:50.859 -0700  pciuser@czc1517bbd
+$$ /opt/nmrdata/PV-360.3.5/data/pciuser/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/pdata/1/reco
 $$ process /opt/PV-360.3.5/prog/bin/parxserver
-##$RECO_time=<2024-07-24T20:15:54,961-0700>
-##$RECO_abs_time=(1721877354, 961, -420)
+##$RECO_time=<2024-07-25T18:42:50,695-0700>
+##$RECO_abs_time=(1721958170, 695, -420)
 ##$RECO_base_image_uid=( 65 )
-<2.16.756.5.5.200.604667140.69010.1721877340.776>
+<2.16.756.5.5.200.604667140.36596.1721958116.163>
 ##$RECO_fov=( 2 )
-3.2 3.2
+4 4
 ##$RECO_size=( 2 )
-64 64
+40 40
 ##$RecoAutoDerive=No
 ##$RecoDim=2
 ##$RecoSpatDim=2
@@ -28,9 +28,9 @@ $$ process /opt/PV-360.3.5/prog/bin/parxserver
 ##$RecoPreppassProcDim=0
 ##$RECO_inp_order=NO_REORDERING
 ##$RECO_inp_size=( 2 )
-64 64
+40 40
 ##$RECO_ft_size=( 2 )
-64 64
+40 40
 ##$RECO_offset=( 2, 1 )
 0 0
 ##$RECO_qopts=( 2 )
@@ -75,13 +75,13 @@ FIRST_ORDER_PC FIRST_ORDER_PC
 ##$RECO_maxima=( 1 )
 32766.5
 ##$RECO_map_min=( 1 )
--70858506.8626231
+-167110056.964174
 ##$RECO_map_max=( 1 )
-70858506.8626231
+167110056.964174
 ##$RECO_map_offset=( 1 )
 0
 ##$RECO_map_slope=( 1 )
-0.000462421541897941
+0.000196077367186972
 ##$RECO_byte_order=littleEndian
 ##$RecoUserUpdate=Yes
 ##$RecoReverseSegment=0
@@ -93,7 +93,7 @@ FIRST_ORDER_PC FIRST_ORDER_PC
 ##$RecoHalfFT=( 2 )
 No No
 ##$RecoHalfFTPos=( 2 )
-19 101
+11 63
 ##$RecoHalfFTAcq=No
 ##$RecoNoFT=No
 ##$RecoExportSortedData=No
@@ -110,22 +110,18 @@ No No
 ##$RecoEncGenInt=0
 ##$RecoSortDim=1
 ##$RecoSortSize=( 1 )
-202
+126
 ##$RecoSortRange=( 1 )
-202
+126
 ##$RecoSortSegment=( 1 )
 0
-##$RecoSortMaps=( 202 )
+##$RecoSortMaps=( 126 )
 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 
 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 
 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 
 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 
 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 
-124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 
-143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 
-162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 
-181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 
-200 201
+124 125
 ##$RecoGrappaAccelFactor=1
 ##$RecoGrappaAccelFactor2=1
 ##$RecoGrappaKernelRead=5
@@ -174,19 +170,19 @@ No No
 ##$RecoCS=No
 ##$RecoCSRead=Yes
 ##$RecoRegridN=On
-##$RecoRegridNPoints=38
-##$RecoRegridNInterleaves=202
+##$RecoRegridNPoints=21
+##$RecoRegridNInterleaves=126
 ##$RecoRegridNTrajType=RecoRegridNTrajRadial
 ##$RecoRegridNTrajFile=( 4096 )
-</opt/nmrdata/PV-360.3.5/data/pciuser/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/traj>
+</opt/nmrdata/PV-360.3.5/data/pciuser/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/traj>
 ##$RecoRegridNDensCorr=RecoRegridNDCPre
 ##$RecoRegridNTrajFileDC=( 4096 )
-</opt/nmrdata/PV-360.3.5/data/pciuser/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/traj>
+</opt/nmrdata/PV-360.3.5/data/pciuser/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/traj>
 ##$RecoRegridNDim=2
 ##$RecoRegridNFtSize=( 2 )
-128 128
+80 80
 ##$RecoRegridNOffset=( 2, 1 )
-32 32
+20 20
 ##$RecoRegridNSetDefaults=On
 ##$RecoRegridNAutoSet=On
 ##$RecoRegridNOver=2
@@ -201,11 +197,11 @@ No No
 ##$RecoStageNrNodes=46
 ##$RecoStageNodes=( 46 )
 (<job0>, 0, <RecoSharedQueueSource 
-Q0{queueId=Job_In0;initQueue=true;appendPsId=true;dim=2;procDim=1;sizes={38,
-202};nr=1;dataRep=SIGNED;baseField=COMPLEX;wordSize=4}>) (<job0>, 0, 
+Q0{queueId=Job_In0;initQueue=true;appendPsId=true;dim=2;procDim=1;sizes={21,
+126};nr=1;dataRep=SIGNED;baseField=COMPLEX;wordSize=4}>) (<job0>, 0, 
 <RecoSharedQueueSink QS{queueId=Job_Out0;initQueue=true;appendPsId=true}>) 
 (<job0>, 0, <RecoFileSink 
-FS{jobNdx=0;writeAcqPars=true;filename="/opt/nmrdata/PV-360.3.5/data/pciuser/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/rawdata.job0"}>) (<job0>, 0, <RecoProgressMonitorFilter PM{reportScanProgress="1/1"}>) (<job0>, 0, <RecoCastFilter CastToFloatMain{dataRep=FLOAT;wordSize=8}>) (<job0>, 0, <RecoAcqOutFilter Av{displayEachAccumulation=1;displayEachScan=0;displayEachPeStep=0;displayFt=0;magnitudeImage=1;shuffle=0;ftSize=64;size=64;offset=0;cnt=1;ndx=0;procnoPath="/opt/nmrdata/PV-360.3.5/data/pciuser/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/pdata/1/";displayObjects=1;modalityType=1;innerObjects=1;outerObjects=1;average=1;numRecs=1;overlayCurves=0;}>) (<job0>, 0, <RecoCastFilter CastToIntMain{dataRep=SIGNED;wordSize=4}>) (<job0>, 0, <RecoTeeFilter TeeStorage>) (<input>, 0, <RecoFileSource FS0{initFromRawJob=0;procDim=1;numChan=1;contData=true;}>) (<input>, 0, <RecoSharedQueueSink JQ0{queueId=Job_Out0;appendPsId=true;initQueue=true;}>) (<compute>, 0, <RecoSharedQueueSource Q0{initFromJob=0;queueId=Job_Out0;appendPsId=true;}>) (<compute>, 0, <RecoBufferSink S0{procDim=1;frameDim=2;bufferId="FIRSTPASS0";memId="out0"}>) (<compute>, 0, <RecoCastFilter CAST0{dataRep=FLOAT; wordSize=8}>) (<compute>, 0, <RecoSortFilter REORD0{sortDim=\<RecoSortDim\>; sortSize=\<RecoSortSize\>; sortRange=\<RecoSortRange\>; sortSegment=\<RecoSortSegment\>; sortMaps=\<RecoSortMaps\>; frameDim = 2}>) (<compute>, 1, <RecoBufferSource Q0{procDim=2;frameDim=2;bufferId="FIRSTPASS0";memId="out0"}>) (<compute>, 1, <RecoBufferSink S0{procDim=2;frameDim=2;bufferId="REGRIDNPASS0";memId="in0"}>) (<compute>, 1, <RecoFileSource QT0{dataRep = FLOAT; wordSize = 8; baseField = REAL; repeatMode = true; nr = \<NR\>; dim = 3; procDim = 3; sizes = {2, 38, 202}; filename = "/opt/nmrdata/PV-360.3.5/data/pciuser/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/traj"}>) (<compute>, 1, <RecoFileSource QDC0{dataRep = FLOAT; wordSize = 8; baseField = REAL; repeatMode = true; nr = \<NR\>; dim = 3; procDim = 3; sizes = {2, 38, 202}; filename = "/opt/nmrdata/PV-360.3.5/data/pciuser/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/traj"}>) (<compute>, 1, <RecoRegridDensCorrFilter DC0{type = "rho"}>) (<compute>, 1, <RecoMultFilter MULT0>) (<compute>, 1, <RecoRegridNFilter REGRID0{outputX = 128; outputY = 128; outputZ = 1; kernelWidth = \<RecoRegridNKernelWidth\>; kernelShapePar = \<RecoRegridNKernelShapeParameter\>; kernelSampDens = \<RecoRegridNKernelSamplingDensity\>; postCorrection = 0}>) (<compute>, 2, <RecoBufferSource Q0{procDim=1;frameDim=2;bufferId="REGRIDNPASS0";memId="in0"}>) (<compute>, 2, <RecoBufferSink S0{procDim=1;frameDim=2;bufferId="FTPASS00";memId="out0"}>) (<compute>, 2, <RecoFTShiftFilter FTS0{frameDim=2; winDirection=0; shift=\<RECO_rotate[0]\>; exponent=1}>) (<compute>, 2, <RecoFTFilter FT0{direction=0;exponent=1;}>) (<compute>, 3, <RecoBufferSource Q0{procDim=2;frameDim=2;bufferId="FTPASS00";memId="out0"}>) (<compute>, 3, <RecoBufferSink S0{procDim=2;frameDim=2;bufferId="FTPASS10";memId="in0"}>) (<compute>, 3, <RecoFTShiftFilter FTS0{frameDim=2; winDirection=1; shift=\<RECO_rotate[1]\>; exponent=1}>) (<compute>, 3, <RecoFTFilter FT0{direction=1;exponent=1;}>) (<compute>, 4, <RecoBufferSource Q0{procDim=2;frameDim=2;bufferId="FTPASS10";memId="in0"}>) (<compute>, 4, <RecoBufferSink S0{procDim=2;frameDim=2;bufferId="PREPPASS0";memId="out0"}>) (<compute>, 4, <RecoPhasCorrFilter PHCORR00{winDirection=0; ph0=0.000000; ph1=180.000000}>) (<compute>, 4, <RecoPhasCorrFilter PHCORR10{winDirection=1; ph0=0.000000; ph1=180.000000}>) (<compute>, 4, <RecoCutoffFilter CUT0{sizes=\<RECO_size\>; frameDim=2; offset=\<RecoRegridNOffset\>;}>) (<compute>, 4, <RecoRegridApodCorrFilter AC00{winDirection = 0; size = 128; kernelWidth = \<RecoRegridNKernelWidth\>; kernelShapePar = \<RecoRegridNKernelShapeParameter\>}>) (<compute>, 4, <RecoRegridApodCorrFilter AC10{winDirection = 1; size = 128; kernelWidth = \<RecoRegridNKernelWidth\>; kernelShapePar = \<RecoRegridNKernelShapeParameter\>}>) (<compute>, 4, <RecoMaskFilter MASK0>) (<compute>, 4, <RecoMagnitudeFilter G0>) (<compute>, 4, <RecoMinMaxFilter M0{map_min=\<RECO_map_min\>;map_max=\<RECO_map_max\>;}>) (<compute>, 5, <RecoBufferSource Q0{procDim=2;frameDim=2;bufferId="PREPPASS0";memId="out0"}>) (<compute>, 5, <RecoSharedQueueSink S0{initQueue=true;queueId=RecoComp_Out;appendPsId=true;}>) (<compute>, 5, <RecoMapFilter MAP0{symmetricMode=true;minima=\<RECO_minima\>;maxima=\<RECO_maxima\>;slope=\<RECO_map_slope\>;offset=\<RECO_map_offset\>;map_min=\<RECO_map_min\>;map_max=\<RECO_map_max\>;rangeMin=-32766.500000;rangeMax=32766.500000;perObjectMode=false;cutoffMode=true;}>) (<compute>, 5, <RecoCastFilter CAST0{dataRep=SIGNED;wordSize=2}>) (<output>, 5, <RecoSharedQueueSource Q{queueId=RecoComp_Out;appendPsId=true;procDim=2;initFromRECO=true;}>) (<output>, 5, <RecoImageDisplayFilter DISP{showAll=1;selectedFrame=\<RecoDisplayFrame\>;modalityType=1;procnoPath="/opt/nmrdata/PV-360.3.5/data/pciuser/20240724_191453_Urea_20240724_NuFFTReconTest_1_1_37/17/pdata/1/";}>) (<output>, 5, <RecoFileSink S{writePars=true;shuffle=false;filename="2dseq";numChans=1;}>)
+FS{jobNdx=0;writeAcqPars=true;filename="/opt/nmrdata/PV-360.3.5/data/pciuser/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/rawdata.job0"}>) (<job0>, 0, <RecoProgressMonitorFilter PM{reportScanProgress="1/1"}>) (<job0>, 0, <RecoCastFilter CastToFloatMain{dataRep=FLOAT;wordSize=8}>) (<job0>, 0, <RecoAcqOutFilter Av{displayEachAccumulation=1;displayEachScan=0;displayEachPeStep=0;displayFt=0;magnitudeImage=1;shuffle=0;ftSize=40;size=40;offset=0;cnt=1;ndx=0;procnoPath="/opt/nmrdata/PV-360.3.5/data/pciuser/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/pdata/1/";displayObjects=1;modalityType=1;innerObjects=1;outerObjects=1;average=1;numRecs=1;overlayCurves=0;}>) (<job0>, 0, <RecoCastFilter CastToIntMain{dataRep=SIGNED;wordSize=4}>) (<job0>, 0, <RecoTeeFilter TeeStorage>) (<input>, 0, <RecoFileSource FS0{initFromRawJob=0;procDim=1;numChan=1;contData=true;}>) (<input>, 0, <RecoSharedQueueSink JQ0{queueId=Job_Out0;appendPsId=true;initQueue=true;}>) (<compute>, 0, <RecoSharedQueueSource Q0{initFromJob=0;queueId=Job_Out0;appendPsId=true;}>) (<compute>, 0, <RecoBufferSink S0{procDim=1;frameDim=2;bufferId="FIRSTPASS0";memId="out0"}>) (<compute>, 0, <RecoCastFilter CAST0{dataRep=FLOAT; wordSize=8}>) (<compute>, 0, <RecoSortFilter REORD0{sortDim=\<RecoSortDim\>; sortSize=\<RecoSortSize\>; sortRange=\<RecoSortRange\>; sortSegment=\<RecoSortSegment\>; sortMaps=\<RecoSortMaps\>; frameDim = 2}>) (<compute>, 1, <RecoBufferSource Q0{procDim=2;frameDim=2;bufferId="FIRSTPASS0";memId="out0"}>) (<compute>, 1, <RecoBufferSink S0{procDim=2;frameDim=2;bufferId="REGRIDNPASS0";memId="in0"}>) (<compute>, 1, <RecoFileSource QT0{dataRep = FLOAT; wordSize = 8; baseField = REAL; repeatMode = true; nr = \<NR\>; dim = 3; procDim = 3; sizes = {2, 21, 126}; filename = "/opt/nmrdata/PV-360.3.5/data/pciuser/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/traj"}>) (<compute>, 1, <RecoFileSource QDC0{dataRep = FLOAT; wordSize = 8; baseField = REAL; repeatMode = true; nr = \<NR\>; dim = 3; procDim = 3; sizes = {2, 21, 126}; filename = "/opt/nmrdata/PV-360.3.5/data/pciuser/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/traj"}>) (<compute>, 1, <RecoRegridDensCorrFilter DC0{type = "rho"}>) (<compute>, 1, <RecoMultFilter MULT0>) (<compute>, 1, <RecoRegridNFilter REGRID0{outputX = 80; outputY = 80; outputZ = 1; kernelWidth = \<RecoRegridNKernelWidth\>; kernelShapePar = \<RecoRegridNKernelShapeParameter\>; kernelSampDens = \<RecoRegridNKernelSamplingDensity\>; postCorrection = 0}>) (<compute>, 2, <RecoBufferSource Q0{procDim=1;frameDim=2;bufferId="REGRIDNPASS0";memId="in0"}>) (<compute>, 2, <RecoBufferSink S0{procDim=1;frameDim=2;bufferId="FTPASS00";memId="out0"}>) (<compute>, 2, <RecoFTShiftFilter FTS0{frameDim=2; winDirection=0; shift=\<RECO_rotate[0]\>; exponent=1}>) (<compute>, 2, <RecoFTFilter FT0{direction=0;exponent=1;}>) (<compute>, 3, <RecoBufferSource Q0{procDim=2;frameDim=2;bufferId="FTPASS00";memId="out0"}>) (<compute>, 3, <RecoBufferSink S0{procDim=2;frameDim=2;bufferId="FTPASS10";memId="in0"}>) (<compute>, 3, <RecoFTShiftFilter FTS0{frameDim=2; winDirection=1; shift=\<RECO_rotate[1]\>; exponent=1}>) (<compute>, 3, <RecoFTFilter FT0{direction=1;exponent=1;}>) (<compute>, 4, <RecoBufferSource Q0{procDim=2;frameDim=2;bufferId="FTPASS10";memId="in0"}>) (<compute>, 4, <RecoBufferSink S0{procDim=2;frameDim=2;bufferId="PREPPASS0";memId="out0"}>) (<compute>, 4, <RecoPhasCorrFilter PHCORR00{winDirection=0; ph0=0.000000; ph1=180.000000}>) (<compute>, 4, <RecoPhasCorrFilter PHCORR10{winDirection=1; ph0=0.000000; ph1=180.000000}>) (<compute>, 4, <RecoCutoffFilter CUT0{sizes=\<RECO_size\>; frameDim=2; offset=\<RecoRegridNOffset\>;}>) (<compute>, 4, <RecoRegridApodCorrFilter AC00{winDirection = 0; size = 80; kernelWidth = \<RecoRegridNKernelWidth\>; kernelShapePar = \<RecoRegridNKernelShapeParameter\>}>) (<compute>, 4, <RecoRegridApodCorrFilter AC10{winDirection = 1; size = 80; kernelWidth = \<RecoRegridNKernelWidth\>; kernelShapePar = \<RecoRegridNKernelShapeParameter\>}>) (<compute>, 4, <RecoMaskFilter MASK0>) (<compute>, 4, <RecoMagnitudeFilter G0>) (<compute>, 4, <RecoMinMaxFilter M0{map_min=\<RECO_map_min\>;map_max=\<RECO_map_max\>;}>) (<compute>, 5, <RecoBufferSource Q0{procDim=2;frameDim=2;bufferId="PREPPASS0";memId="out0"}>) (<compute>, 5, <RecoSharedQueueSink S0{initQueue=true;queueId=RecoComp_Out;appendPsId=true;}>) (<compute>, 5, <RecoMapFilter MAP0{symmetricMode=true;minima=\<RECO_minima\>;maxima=\<RECO_maxima\>;slope=\<RECO_map_slope\>;offset=\<RECO_map_offset\>;map_min=\<RECO_map_min\>;map_max=\<RECO_map_max\>;rangeMin=-32766.500000;rangeMax=32766.500000;perObjectMode=false;cutoffMode=true;}>) (<compute>, 5, <RecoCastFilter CAST0{dataRep=SIGNED;wordSize=2}>) (<output>, 5, <RecoSharedQueueSource Q{queueId=RecoComp_Out;appendPsId=true;procDim=2;initFromRECO=true;}>) (<output>, 5, <RecoImageDisplayFilter DISP{showAll=1;selectedFrame=\<RecoDisplayFrame\>;modalityType=1;procnoPath="/opt/nmrdata/PV-360.3.5/data/pciuser/20240725_183720_Urea_20240725_NuFFTReconTest_1_1_38/2/pdata/1/";}>) (<output>, 5, <RecoFileSink S{writePars=true;shuffle=false;filename="2dseq";numChans=1;}>)
 ##$RecoStageNrEdges=37
 ##$RecoStageEdges=( 37 )
 (<job0>, 0, <Q0-\>PM>) (<job0>, 0, <PM-\>CastToFloatMain>) (<job0>, 0, 
@@ -263,4 +259,4 @@ $$ @vis= RecoEachNR RecoPrototype RecoGradientLinearityCorrection
 $$ @vis= RecoGradientLinearityCorrectionDebug
 $$ @vis= RecoGradientLinearityCorrectionApprox
 ##END=
-$$ File finished by PARX at 2024-07-24 20:15:55.097 -0700
+$$ File finished by PARX at 2024-07-25 18:42:50.860 -0700
