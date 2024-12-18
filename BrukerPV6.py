@@ -1,5 +1,5 @@
 """
-Python class that reads rawdata generated from Bruker ParaVision 6 environment
+Python class that reads rawdata generated from Bruker ParaVision 6.0.1 environment
 
 Testing examples are privided in the corresponing Jupyter Notebook (BrukerPV6.ipynb)
 """
@@ -22,36 +22,11 @@ from pybaselines import Baseline
 # In-house packages
 
 POST_PROCESSING_PARAMETERS = {
-    'is_verbose'                : False
+    'is_verbose'                : False, 
+    'does_update_pdata'          : True
 }
 
-RAW_DATA_SET = {
-    'fid'       : 'fid',
-    'ser'       : 'ser',
-    # pdata subdir might not exist due to user config (not performing factory reconstruction)
-    '2dseq'     : 'pdata/1/2dseq',
-    'dicom'     : 'pdata/1/dicom',
-}
 
-RAW_PARAM_SET = {
-    'acqp'      : 'acqp',
-    'method'    : 'method',
-    'visu_pars' : 'visu_pars',
-    # pdata subdir might not exist due to user config (not performing factory reconstruction)2
-    'procs'     : 'pdata/1/procs',
-    'reco'      : 'pdata/1/reco'
-}
-
-DATA_COLLECTION_TEMPLATE = {
-    'time_point_sec' : None,
-    'fid'            : None,
-    'ser'            : None,
-    '2dseq'          : None,
-    'k_space'        : None,
-    'r_image'        : None,
-    'f_spect'        : None,
-    'proj'           : None
-}
 
 
 class BrukerPV6Exp():
@@ -70,21 +45,26 @@ class BrukerPV6Exp():
     
     def __init__(self, exp_dataset_path:str, **kwargs) -> None:
         """
-        0. update params for post-processing:
-    
-        1. validate experiment dataset:
-            1.1 data files:
-                must        : fid (1d NSpect) ser(pseudo-2d NSpect)
-                optional    : 2dseq
-            1.2 param files:
-                must        : acqp, method, visu_pars
-                optional    : acqu, acqus, procs, reco
+        Update20241213:
+        We are going to rewrite the logic here:
+        0. update parameters for post-processing
+
+        1. look for essential k-space data and parameters for data acquisition, then update them
+            1.1 find raw readout data: FID or SER, at least one should be present
+            1.2 find parameter files for data acquisition: acqp and method, both must be there
+            1.3 update k-space data
+            1.4 update acq params
         
-        2. update dataset_dict['PARAM']:
+        2. look for Bruker factory recon
+            2.1 verify the existence of Bruker factory recon data:
+                2.1.1 if None found, return None as result
+                2.1.2 if found, return the number of sets of Bruker factory recon data
+            2.2 find Bruker factory recon data: 2dseq
+            2.3 find Bruker factory recon parameter files: visu_pars, procs
+            2.4 update Bruker factory recon data
+            2.5 update Bruker factory recon params
 
-        3. update data_collection:
-
-        4. perform reconstruction:
+        3. (optional) in-house recon
 
         """
     
@@ -92,18 +72,16 @@ class BrukerPV6Exp():
 
         if (self.post_processing_params['is_verbose']):
             print(exp_dataset_path)
-        
-        self.dataset = {"DATA": None, "PARAM": None}
+        self.exp_dataset_path = exp_dataset_path
+        self.dataset = {"DATA": {}, "PARAM": {}}
 
-        self._validate_dataset_files(exp_dataset_path)
+        self._process_rawdata_files()
 
-        self._update_dataset_param()       
-        self._update_dataset_data()
-        
         if (self.post_processing_params['does_update_pdata']):
-            self.dataset['DATA']['2dseq'] = self._process_2dseq()
-            self.dataset['DATA']['fid'] = self._process_fid()    
-        
+            self._process_pdata_files()
+        else:
+            self._ignore_pdata_files()
+
     def _update_post_processing_params(self, kwargs):
         """
         parse possible tags for post-processing
@@ -112,94 +90,41 @@ class BrukerPV6Exp():
         recon_params.update((k, kwargs[k]) for k in (recon_params.keys() & kwargs.keys()) )
         return recon_params  
 
-    def _validate_dataset_files(self, exp_dataset_path):
+    def _process_rawdata_files(self):
         """
-        Confirm that the given path of experimental dataset is valid
+        1. _validate_acq_params
+        2. _validate_rawdata_binary
         """
-        if (not (os.path.isdir(exp_dataset_path))):
-            raise OSError(f"Given directory of Experiment ({exp_dataset_path}) does not exist")
+
+        self._validate_acq_params()
+        self._validate_rawdata_binary()
+
+        pass
+
+
+    def _validate_acq_params(self):
+        acqp_path = os.path.join(self.exp_dataset_path, 'acqp')
+        if (os.path.exists(acqp_path)):
+            self.dataset['PARAM'].update({'acqp': self._read_param_dicts(acqp_path)})
+        else:
+            self.dataset['PARAM']['acqp'] = None
+            raise OSError(f"Given directory of Experiment ({self.exp_dataset_path}) does not contain acqp file")
         
-        self._validate_data_files(exp_dataset_path)
-        self._validate_param_files(exp_dataset_path)
-
+        method_path = os.path.join(self.exp_dataset_path, 'method')
+        if (os.path.exists(method_path)):
+            self.dataset['PARAM']['method'] = self._read_param_dicts(method_path)
+        else:
+            self.dataset['PARAM']['method'] = None
+            raise OSError(f"Given directory of Experiment ({self.exp_dataset_path}) does not contain method file")
         
-
-    def _validate_data_files(self, exp_dataset_path)->Dict:
-        """
-        1.1 data files:
-            must        : fid or ser
-            optional    : 2dseq
-        """
-        data_dict = RAW_DATA_SET 
-     
-        self.dataset['DATA'] = self._complete_abs_path(data_dict, exp_dataset_path) 
-
-        for key, val in self.dataset['DATA'].items():
-            if (not os.path.exists(val)):
-                
-                self.dataset['DATA'][key] = None
-       
-        if ((self.dataset['DATA']['fid'] == None) and (self.dataset['DATA']['ser'] == None)):
-                raise FileNotFoundError(f"Cannot find raw data file, neither fid nor ser, in the given directory of Experiment ({exp_dataset_path})")
-        
-        if (self.post_processing_params['is_verbose']):
-            print('end of _validate_data_files')
-            pprint(self.dataset['DATA'])
-
-    def _validate_param_files(self, exp_dataset_path)->Dict:
-        """
-        1.2 param files:
-            must        : acqp, method, visu_pars
-            optional    : acqu, acqus, procs, reco        
-        """
-        param_dict = RAW_PARAM_SET
-        self.dataset['PARAM'] = self._complete_abs_path(param_dict, exp_dataset_path)
-
-        for key, val in self.dataset['PARAM'].items():
-            if (not os.path.isfile(val)):
-                self.dataset['DATA'][key] = None
-
-        for key in ['acqp', 'method', 'visu_pars']:
-            if (self.dataset['PARAM'][key] == "None"):
-                raise FileNotFoundError(f"Cannot find {key} file in the given directory of Experiment ({exp_dataset_path})")
+        visu_pars_path = os.path.join(self.exp_dataset_path, 'visu_pars')
+        if (os.path.exists(method_path)):
+            self.dataset['PARAM']['visu_pars'] = self._read_param_dicts(visu_pars_path)
+        else:
+            self.dataset['PARAM']['visu_pars'] = None
+            raise OSError(f"Given directory of Experiment ({self.exp_dataset_path}) does not contain visu_pars file")
         
 
-
-    def _complete_abs_path(self, dp_dict, exp_dataset_path):
-        """
-        """
-        ret_dict = copy.deepcopy(dp_dict)
-        
-        for key, value in ret_dict.items():
-            abs_path = os.path.join(exp_dataset_path, value)
-            ret_dict[key] = abs_path
-        
-        return ret_dict
-
-
-    def _update_dataset_param(self):
-        """
-        """
-        param_dict = {}
-        for key, value in self.dataset['PARAM'].items():
-            temp_dict = self._read_param_dicts(value)
-            param_dict = (param_dict | temp_dict)
-        
-        self.dataset['PARAM'] = param_dict
-        
-    
-    def _update_dataset_data(self):
-
-        data = copy.deepcopy(DATA_COLLECTION_TEMPLATE)
-        
-        if self.dataset['DATA']['2dseq']:
-            data['2dseq'] = self.dataset['DATA']['2dseq']
-        if self.dataset['DATA']['fid']:
-            data['fid'] = self.dataset['DATA']['fid']
-        if self.dataset['DATA']['ser']:
-            data['ser'] = self.dataset['DATA']['ser']
-
-        self.dataset['DATA'] = data
 
     def _read_param_dicts(self, param_file_path):
         """
@@ -300,75 +225,135 @@ class BrukerPV6Exp():
 
         return result    
 
-    def _process_2dseq(self):
-        """
-        Read and reshape the 2dseq image, which is reconstructed with Bruker algorithm and stored in Bruker format.
-        """
-        _raw_2dseq_dtype = self.dataset['PARAM']['VisuCoreWordType']
-        _raw_2dseq_b_order = self.dataset['PARAM']['VisuCoreByteOrder']
+    def _validate_rawdata_binary(self):
+                
+        #   Confirm that the given path of experimental dataset is valid
+        if (os.path.isdir(self.exp_dataset_path)):
+            fid_path = os.path.join(self.exp_dataset_path, 'fid')
+            if (os.path.exists(fid_path)):
+                self.dataset['DATA']['fid_path'] = fid_path
+            else:
+                ser_path = os.path.join(self.exp_dataset_path, 'ser')
+                if (os.path.exists(ser_path)):
+                    self.dataset['DATA']['fid_path'] = ser_path
+                else:
+                    self.dataset['DATA']['fid_path'] = None
+                    raise OSError(f"Given directory of Experiment ({self.exp_dataset_path}) does not contain any binary data")
 
-        if ((_raw_2dseq_dtype == '_16BIT_SGN_INT') and (_raw_2dseq_b_order == 'littleEndian')):
-            raw_2dseq = np.fromfile(file=self.dataset['DATA']['2dseq'], dtype='int16')
-        
-        data_shape = np.append(self.dataset['PARAM']['NR'], -1)
-
-        raw_2dseq = np.reshape(raw_2dseq, data_shape)
-        
-        return raw_2dseq
-    
+        else:
+            raise OSError(f"Given directory of Experiment ({self.exp_dataset_path}) does not exist")
+        if (self.dataset['DATA']['fid_path']):
+            self.dataset['DATA']['fid'] = self._process_fid()  
+  
     def _process_fid(self):
         """
         Read binary fid into cmplx128 format, and partition into transients.
         """
         raw_fids = self._read_binary_fid()
         raw_fids = self._deserialize_binary_fid(raw_fids)
-        raw_fids = np.asarray(np.array_split(raw_fids, self.dataset['PARAM']["NR"]))
+        #   Pending array NR-reshaping 
+        #   raw_fids = np.asarray(np.array_split(raw_fids, self.dataset['PARAM']["NR"]))
         return raw_fids
 
     def _read_binary_fid(self) -> np.ndarray:
         """
         """
-        _raw_fid_dtype = self.dataset['PARAM']['GO_raw_data_format']
+        _raw_fid_dtype = self.dataset['PARAM']['acqp']['GO_raw_data_format']
         if (_raw_fid_dtype == 'GO_32BIT_SGN_INT') :
-            fid = np.fromfile(file=self.dataset['DATA']['fid'], dtype='int32')
-
+            fid_dtype = 'int32'
+        elif (_raw_fid_dtype == 'GO_16BIT_SGN_INT'):
+            fid_dtype = 'int16'
         else:
             raise TypeError( f'Raw FID data in Unknown Datatype ({_raw_fid_dtype})' )
+        
+        fid = np.fromfile(file=self.dataset['DATA']['fid_path'], dtype=fid_dtype)
         return fid
     
     def _deserialize_binary_fid(self, fid) -> np.ndarray:
         fid = np.asarray(fid[0::2, ...] + 1j * fid[1::2, ...])
         fid.astype(np.complex128)
         return fid
-    
-    def _process_raw(self, raw_type):
-        raw_fids = self._read_binary(raw_type)
-        raw_fids = self._deserialize_binary_cmplx(raw_fids)
-        raw_fids = np.asarray(np.array_split(raw_fids, self.dataset['PARAM']["NR"]))
-        return raw_fids
+ 
+    def _ignore_pdata_files(self):
+        self.dataset['DATA']['2dseq'] = None
+        self.dataset['PARAM']['procs'] = None
+        self.dataset['PARAM']['reco'] = None
+        self.dataset['PARAM']['p_visu_pars'] = None
 
-    def _read_binary(self, raw_type) -> np.ndarray:
+    def _process_pdata_files(self):
         """
+        1. screen pdata folder and get number of sub-directories
+            1.1 os.walk the pdata dir
+            1.2 generate list of 2dseq paths
+            1.3 generate list of procs paths
+            1.4 generate list of reco paths
+            1.5 generate list of p_visu_pars paths
+        2. update pdata 2dseq and respective reco_params
         """
-        _raw_fid_dtype = self.dataset['PARAM']['GO_raw_data_format']
-        if (_raw_fid_dtype == 'GO_32BIT_SGN_INT') :
-            fid = np.fromfile(file=self.dataset['DATA'][raw_type], dtype='int32')
 
+
+
+        pdata_dir_path = os.path.join(self.exp_dataset_path, 'pdata')
+        # Exist pdata dir
+        if (os.path.exists(pdata_dir_path)):
+            pdata_walk_through_list = list(os.walk(pdata_dir_path))
+
+            # pdata dir has content
+            pdata_dir_content = pdata_walk_through_list[0][1]
+            if ( pdata_dir_content ):
+                for idx, sub_dir_info in enumerate(pdata_walk_through_list[1:]):
+                    self.dataset['DATA'][pdata_dir_content[idx]] = {}
+                    self.dataset['PARAM'][pdata_dir_content[idx]] = {}
+                    sub_dir_path = sub_dir_info[0]
+
+
+                    if ('procs' in sub_dir_info[2]):
+                        path_procs = os.path.join(sub_dir_path, 'procs')
+                        self.dataset['PARAM'][pdata_dir_content[idx]]['procs'] = self._read_param_dicts(path_procs)
+                    
+                    if ('reco' in sub_dir_info[2]):
+                        path_reco = os.path.join(sub_dir_path, 'reco')
+                        self.dataset['PARAM'][pdata_dir_content[idx]]['reco'] = self._read_param_dicts(path_reco)
+
+                    if ('visu_pars' in sub_dir_info[2]):
+                        path_p_visu_pars = os.path.join(sub_dir_path, 'visu_pars')
+                        self.dataset['PARAM'][pdata_dir_content[idx]]['visu_pars'] = self._read_param_dicts(path_p_visu_pars)                                            
+
+                    
+                    if ('2dseq' in sub_dir_info[2]):
+                        path_2dseq = os.path.join(sub_dir_path, '2dseq')
+                        self.dataset['DATA'][pdata_dir_content[idx]]['2dseq'] = self._process_2dseq(pdata_dir_content[idx], path_2dseq)
+
+                pass
+            # empty pdata dir
+            else:
+                self._ignore_pdata_files()
+                raise OSError(f"Given directory of Experiment ({self.exp_dataset_path}) contain empty pdata folder.")
+            
+        # No pdata dir
         else:
-            raise TypeError( f'Raw FID data in Unknown Datatype ({_raw_fid_dtype})' )
-        return fid
-    
-    def _deserialize_binary_cmplx(self, fid) -> np.ndarray:
-        fid = np.asarray(fid[0::2, ...] + 1j * fid[1::2, ...])
-        fid.astype(np.complex128)
-        return fid
-    
+            self._ignore_pdata_files()
+            raise OSError(f"Given directory of Experiment ({self.exp_dataset_path}) does contain pdata folder.")
+        
+
+
+    def _process_2dseq(self, pdata_idx, path_2dseq):
+        """
+        Read and reshape the 2dseq image, which is reconstructed with Bruker algorithm and stored in Bruker format.
+        """
+        _raw_2dseq_dtype = self.dataset['PARAM'][pdata_idx]['visu_pars']['VisuCoreWordType']
+        _raw_2dseq_b_order = self.dataset['PARAM'][pdata_idx]['visu_pars']['VisuCoreByteOrder']
+
+        if ((_raw_2dseq_dtype == '_16BIT_SGN_INT') and (_raw_2dseq_b_order == 'littleEndian')):
+            raw_2dseq = np.fromfile(file=path_2dseq, dtype='int16')
+                
+        return raw_2dseq
+
     def _fit_proj_baseline(self, proj, lambda_fit):
         baseline_fitter = Baseline(x_data=proj)                     
         return baseline_fitter.aspls(proj, lam=lambda_fit)[0]
 
     def _normalize_splines(self):
-        
-        
-        
         return NotImplemented
+        
+    

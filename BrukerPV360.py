@@ -238,7 +238,9 @@ class BrukerPV360Exp():
                 else:
                     line = line + new_line
             return line.split(",") 
-
+        """
+            In PV360, array data might be stored in various ways. we modified the jdoepfert method
+        
         # if we can extract the arraysize, then read in the next line in buffer and try extracting values/entries
         # first check if the format of entries:
         #   1. each entry is a list
@@ -248,7 +250,7 @@ class BrukerPV360Exp():
         #       3.2 there is shorthand notation (e.g. @64*(0), which means 64 times string '0')
         
         # read next line, i.e. the first line of array content for parsing
-        
+        """
         #vallist = current_file.readline().split()
         
         # read in all contents before next paramerter enters
@@ -282,33 +284,23 @@ class BrukerPV360Exp():
 
         else:
             """
-            for idx, val in enumerate(vallist):
-                try:
-                    vallist[idx] = int(val)
-                except ValueError:
-                    try:
-                        vallist[idx] = float(val)
-                    except ValueError:
-                            if ((val.startswith('@')) and ('*' in val)):
-                                reps_regex = re.compile(r'^\@\d+\*')
-                                data_regex = re.compile(r'\([+-]?\d+(?:\.\d+)?\)$')
-                                reps = int(reps_regex.findall(val)[0][1:-1])
-                                data = float(data_regex.findall(val)[0][1:-1])
-                   
-                                vallist[idx:idx+1] = [data] * reps
-                                if ('SpiralShape1' in param_name):
-                                    print("1", vallist[-50:])
-            
-            if ('SpiralShape1' in param_name):
-                            print( '2',vallist[-50:])
+            In PV360, float data might be stored in various ways. we modified the jdoepfert method
             """
             for idx, val in enumerate(vallist):
                 if (type(val) == str):
                     if ((val.startswith('@')) and ('*' in val)):
                         reps_regex = re.compile(r'^\@\d+\*')
-                        data_regex = re.compile(r'\([+-]?\d+(?:\.\d+)?\)$')
                         reps = int(reps_regex.findall(val)[0][1:-1])
-                        data = float(data_regex.findall(val)[0][1:-1])
+                        if (('e' in val) or ('E' in val)):
+                            data_regex = re.compile(r'[+-]?\d+(?:\.\d+)?[eE](?:[+-]\d+)?')
+                            tmp = data_regex.findall(val)
+                            data = float(tmp[0])
+                        elif ('.' in val):
+                            data_regex = re.compile(r'\([+-]?\d+(?:\.\d+)?\)')
+                            data = float(data_regex.findall(val)[0][1:-1])
+                        else:
+                            data_regex = re.compile(r'\([+-]?\d+\)')
+                            data = int(data_regex.findall(val)[0][1:-1])
                         vallist[idx:idx+1] = [data] * reps
 
  
