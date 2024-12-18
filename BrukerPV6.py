@@ -1,5 +1,5 @@
 """
-Python class that reads rawdata generated from Bruker ParaVision 6.0.1 environment
+Python class that reads rawdata generated from Bruker ParaVision 6 environment
 
 Testing examples are privided in the corresponing Jupyter Notebook (BrukerPV6.ipynb)
 """
@@ -25,7 +25,6 @@ POST_PROCESSING_PARAMETERS = {
     'is_verbose'                : False, 
     'does_update_pdata'          : True
 }
-
 
 
 
@@ -344,10 +343,20 @@ class BrukerPV6Exp():
         _raw_2dseq_dtype = self.dataset['PARAM'][pdata_idx]['visu_pars']['VisuCoreWordType']
         _raw_2dseq_b_order = self.dataset['PARAM'][pdata_idx]['visu_pars']['VisuCoreByteOrder']
 
-        if ((_raw_2dseq_dtype == '_16BIT_SGN_INT') and (_raw_2dseq_b_order == 'littleEndian')):
-            raw_2dseq = np.fromfile(file=path_2dseq, dtype='int16')
-                
-        return raw_2dseq
+        if (_raw_2dseq_dtype == '_32BIT_SGN_INT'):
+            _raw_2dseq_dtype = 'int32'
+        elif (_raw_2dseq_dtype == '_16BIT_SGN_INT'):
+            _raw_2dseq_dtype = 'int16'
+        elif (_2dseq_dtype=='_32BIT_FLOAT'):
+            _2dseq_dtype = 'float32'
+        else:
+            raise ValueError(f"Unknown VisuCoreWorkType ({_raw_2dseq_dtype}). Need to update code to accomodate.")
+
+
+        if (_raw_2dseq_b_order == 'littleEndian'):
+            return np.fromfile(file=path_2dseq, dtype=_raw_2dseq_dtype)
+        else:        
+            return None 
 
     def _fit_proj_baseline(self, proj, lambda_fit):
         baseline_fitter = Baseline(x_data=proj)                     
